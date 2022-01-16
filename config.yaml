@@ -1,6 +1,7 @@
 baseURL: 'http://simon.duchastel.com/'
 languageCode: 'en-us'
 title: "Simon Duchastel"
+paginate: 10
 theme: "PaperMod"
 params:
     profileMode:
@@ -19,7 +20,11 @@ params:
           url: "https://www.linkedin.com/in/simonduchastel/"
         - name: "email"
           url: "mailto://simon@duchastel.com"
-assets:
-    - favicon: "http://localhost:1313/favicon.ico"
-    - favicon16x16: "http://localhost:1313/favicon-16x16.ico"
-    - favicon32x32: "http://localhost:1313/favicon-32x32.ico"
+menu:
+  main:
+    - identifier: about
+      name: "About Me"
+      url: "/about-me"
+      
+taxonomies:
+  project-tag: project-tags

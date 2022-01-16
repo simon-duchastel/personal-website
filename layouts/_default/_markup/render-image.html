@@ -1,0 +1,2 @@
+<!-- This is the same as in PaperMod, but modified to hard-code the size to 400x400 if it detects this is a profile image -->
+<img loading="lazy" src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }} {{ if eq .Title "Profile" }} height="400px" width="400px" {{end}} />
