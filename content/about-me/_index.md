@@ -10,6 +10,6 @@ Professionally, I mostly develop mobile applications for Android. I have the mos
 
 In my off-time, I enjoy reading and writing science fiction stories. Some of my favorite books are Foundation by Isaac Asimov, Dune by Frank Herbert, and A Memory Called Empire by Arkady Martine. However, I'll read just about anything that can be classified as Science Fiction!
 
-I'm also deeply interested in transit systems (particularly metro/subway systems) and urban development. Outside of work you'll find me perusing the latest transit news, reading up on new and innovative transit lines, and riding trains all over the world!
+I'm also deeply interested in transit systems (particularly metro/subway systems) and urban development. Outside of work you'll find me perusing the latest transit news, reading up on new and innovative transit lines, and riding trains.
 
 This website is a way for me to catalogue some of the things I do in my spare time and to share them with anyone who's interested. I mostly post software projects I've worked on and scifi stories I've written.
