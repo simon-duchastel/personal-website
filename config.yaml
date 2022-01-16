@@ -1,0 +1,25 @@
+baseURL: 'http://simon.duchastel.com/'
+languageCode: 'en-us'
+title: "Simon Duchastel"
+theme: "PaperMod"
+params:
+    profileMode:
+        enabled: true
+        title: "Simon Duchastel"
+        subtitle: "Software Engineer | Scifi Fan | Transit Enthusiast"
+        buttons:
+            - name: Stories
+              url: "/stories"
+            - name: Projects
+              url: "/projects"
+    socialIcons:
+        - name: "github"
+          url: "https://github.com/simon-duchastel"
+        - name: "linkedin"
+          url: "https://www.linkedin.com/in/simonduchastel/"
+        - name: "email"
+          url: "mailto://***REMOVED***"
+assets:
+    - favicon: "http://localhost:1313/favicon.ico"
+    - favicon16x16: "http://localhost:1313/favicon-16x16.ico"
+    - favicon32x32: "http://localhost:1313/favicon-32x32.ico"
