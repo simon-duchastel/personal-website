@@ -55,7 +55,7 @@ Hopefully, as KMP matures its build process likewise gets more understandable. W
 
 I plan to continue working on this project and have a few ideas for things to do to wrap it up:
 
-- Finish the remaining 10 problems.
+- Finish the remaining 11 problems.
 - Generate a basic app Android app to solve the problems
 - Generate a basic website to solve the problems
 
