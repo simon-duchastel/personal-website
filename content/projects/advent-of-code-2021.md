@@ -8,13 +8,13 @@ project-tags: ["Advent of Code 2021"]
 
 This year for the Advent of Code challenge, I wanted to use it as an opportunity to try out something new. At the company I work for (98point6) some teams were starting to use Rust, and since it's a language that seems really interesting I was considering doing the problems in that. However, I decided instead to look into [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) (KMP) and better understand what it means to write Kotlin code that can run on an Android device, an iOS device, a web browser, and more. (Maybe I'll do Rust next year!).
 
-### Kotlin Multiplatform
+## Kotlin Multiplatform
 
 Kotlin Multiplatform utilizes the three different Kotlin compilers Jetbrains has for Kotlin - Kotlin JVM for compiling to JVM bytecode, Kotlin Native for compiling to native binaries, and Kotlin Javascript for compiling into Javascript. You can define `common` code that's platform-agnostic (meaning you can't reference Java-specific APIs like JVM file system operations, for example).
 
 You can also specify platform-specific code that works with the common code but uses platform-specific functionality, and is only present when compiled to that platform. Common code can depend on platform-specific APIs by using the `expect` keyword, which tells Kotlin "This function/variable/etc. isn't defined here, but each platform will have its own implementation that you can depend on". Each platform you compile to must have corresponding `actual` declarations.
 
-### The Project
+## The Project
 
 For this project, I decided I'd start with creating a command-line program for executing each of the AoC problems. I could do it as a simple Java command line tool like I'm used to, but I figured that if I'm going to be using Kotlin Native I might as well make use of the native functionality! Since I was developing on a windows machine, I targeted MinGW.
 
@@ -33,7 +33,7 @@ Once you select a problem, there are a series of sub-questions — such as wheth
 
 You can find my code on Github here: https://github.com/simon-duchastel/advent-of-code-2021
 
-### Things I've Learned
+## Things I've Learned
 
 #### I still really like fold()
 
@@ -51,7 +51,7 @@ As I mentioned before, I fully admit that I am far from being a gradle wizard. T
 
 Hopefully, as KMP matures its build process likewise gets more understandable. When you have to build across three different platforms (and more when you consider all the sub-configurations for each platform), I imagine there's always going to be a certain level of complexity. For those not wanting to do anything fancy though and just compile a basic command line executable, app, or website, that complexity should be more-or-less hidden if Jetbrains wants KMP to become more widely adopted.
 
-### Next Steps
+## Next Steps
 
 I plan to continue working on this project and have a few ideas for things to do to wrap it up:
 
