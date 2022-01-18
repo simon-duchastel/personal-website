@@ -23,13 +23,13 @@ After a lot of trial and error and coercing Gradle to do what I wanted it to, bu
 gradlew linkReleaseExecutableMingw
 ```
 
-I'm pretty pleased with how the command line tool turned out. There's definitely some rough edges, but the abstractions I built early on ended up enabling me to effortlessly add additional problems to the tool. I setup a system where each problem could declare a top-level command to respond to, as well as sub-commands the user can execute. The most annoying thing initially was probably getting the file system access right, since I had to use the native system functionality rather than the nicer stuff the JVM provides you.
+I'm pretty pleased with how the command line tool turned out. There's definitely some rough edges, but the abstractions I built early on ended up enabling me to effortlessly add additional problems to the tool. I setup a system where each problem could declare a top-level command to respond to, as well as sub-commands the user can execute. The most annoying thing initially was probably getting the file system access right, since I had to use the native system functionality rather than the nicer stuff the JVM provides.
 
-My goal in designing the tool was to make it somewhat conversational. When you start the tool, it asks you which problem you want to execute.
+My goal in designing the tool was to make it conversational. When you run the tool, it asks you which problem you want to execute.
 
 ![Command Line Tool In Action](command-line.gif#center "Command Line Tool")
 
-Once you select a problem, that problem then has a series of sub-questions such as whether part 1 or part 2 should be executed. It's pretty basic, but works fairly well. I'm also pretty pleased with my solutions, although most of them are fairly straight-forward. I especially liked those problems that were about simulating things, since I was able to model the problem with types and functions and use immutable state to keep track of the result.
+Once you select a problem, there are a series of sub-questions — such as whether part 1 or part 2 should be executed. It's pretty basic, but works fairly well. I'm also pretty pleased with my solutions, although most of them are fairly straight-forward. I especially liked those problems that were about simulating things, since I was able to model the problem with types and functions and use immutable state to keep track of the result.
 
 You can find my code on Github here: https://github.com/simon-duchastel/advent-of-code-2021
 
