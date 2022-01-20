@@ -4,22 +4,23 @@ title: "Simon Duchastel"
 paginate: 10
 theme: "PaperMod"
 params:
-    profileMode:
-        enabled: true
-        title: "Simon Duchastel"
-        subtitle: "Software Engineer | Scifi Fan | Transit Enthusiast"
-        buttons:
-            - name: Stories
-              url: "/stories"
-            - name: Projects
-              url: "/projects"
-    socialIcons:
-        - name: "github"
-          url: "https://github.com/simon-duchastel"
-        - name: "linkedin"
-          url: "https://www.linkedin.com/in/simonduchastel/"
-        - name: "email"
-          url: "mailto://simon@duchastel.com"
+  env: production
+  profileMode:
+      enabled: true
+      title: "Simon Duchastel"
+      subtitle: "Software Engineer | Scifi Fan | Transit Enthusiast"
+      buttons:
+          - name: Stories
+            url: "/stories"
+          - name: Projects
+            url: "/projects"
+  socialIcons:
+      - name: "github"
+        url: "https://github.com/simon-duchastel"
+      - name: "linkedin"
+        url: "https://www.linkedin.com/in/simonduchastel/"
+      - name: "email"
+        url: "mailto://simon@duchastel.com"
 menu:
   main:
     - identifier: about
