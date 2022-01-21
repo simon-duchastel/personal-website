@@ -6,7 +6,7 @@ project-tags: ["Advent of Code 2021"]
 
 [Source](https://github.com/simon-duchastel/advent-of-code-2021)
 
-This year for the Advent of Code challenge, I wanted to use it as an opportunity to try out something new. At the company I work for (98point6) some teams were starting to use Rust, and since it's a language that seems really interesting I was considering doing the problems in that. However, I decided instead to look into [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) (KMP) and better understand what it means to write Kotlin code that can run on an Android device, an iOS device, a web browser, and more. (Maybe I'll do Rust next year!).
+This year for the Advent of Code challenge, I wanted to use it as an opportunity to try out a new technology. At the company I work for (98point6) some teams were starting to use Rust, and since it's a language that seems really interesting I was considering doing the problems in that. However, I decided instead to look into [Kotlin Multiplatform (KMP)](https://kotlinlang.org/docs/multiplatform.html) and better understand what it means to write Kotlin code that can run on an Android device, an iOS device, a web browser, etc. (Maybe I'll do Rust next year!).
 
 ## Kotlin Multiplatform
 
