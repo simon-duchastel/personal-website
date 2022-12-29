@@ -1,4 +1,4 @@
-baseURL: 'http://simon.duchastel.com/'
+baseURL: 'https://simon.duchastel.com/'
 languageCode: 'en-us'
 title: "Simon Duchastel"
 paginate: 10
@@ -14,18 +14,17 @@ params:
             url: "/stories"
           - name: Projects
             url: "/projects"
+          - name: Resume
+            url: "resume.pdf"
   socialIcons:
       - name: "github"
         url: "https://github.com/simon-duchastel"
       - name: "linkedin"
         url: "https://www.linkedin.com/in/simonduchastel/"
-      - name: "email"
-        url: "mailto://simon@duchastel.com"
+      - name: "facebook"
+        url: "https://www.facebook.com/simonduchastel/"
 menu:
   main:
     - identifier: about
       name: "About Me"
       url: "/about-me"
-      
-taxonomies:
-  project-tag: project-tags

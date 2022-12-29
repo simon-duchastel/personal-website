@@ -1,7 +1,6 @@
 ---
 title: "Older Projects"
 date: 2022-01-15
-project-tags: ["Advent of Code 2020", "Nebula Game", "CropConnect"]
 ---
 
 As I put this website together, I think it's only fair to include some software projects I've worked on in the past. (It also helps beef up the site until I actually do some interesting things).

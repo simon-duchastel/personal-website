@@ -1,7 +1,6 @@
 ---
 title: "Advent of Code 2021"
 date: 2022-01-18
-project-tags: ["Advent of Code 2021"]
 ---
 
 [View the code](https://github.com/simon-duchastel/advent-of-code-2021)
@@ -12,7 +11,7 @@ This year for the Advent of Code challenge, I wanted to use the opportunity to t
 
 Kotlin Multiplatform utilizes the three different Kotlin compilers - Kotlin JVM for compiling to JVM bytecode, Kotlin Native for compiling to native binaries, and Kotlin Javascript for compiling to Javascript.
 
- You can define `common` code that's platform-agnostic (meaning you can't reference Java-specific APIs like JVM file system operations, for example). You can also specify platform-specific code that works with the common code but uses platform-specific functionality, and is only present when compiled to that platform. Common code can depend on platform-specific APIs by using the `expect` keyword, which tells Kotlin _This isn't defined here, but each platform will have its own implementation that you can depend on_. Each platform you compile to must have corresponding `actual` declarations.
+ You can define `common` code that's platform-agnostic (meaning you can't reference Java-specific APIs like JVM file system operations, for example). You can also specify platform-specific code that works with the common code but uses platform-specific functionality, and is only present when compiled to that platform. Common code can depend on platform-specific APIs by using the `expect` keyword, which tells Kotlin that _this isn't defined here, but each platform will have its own implementation that you can depend on_. Each platform you compile to must have corresponding `actual` declarations.
 
 ## The Project
 
