@@ -11,7 +11,7 @@ So with that, here are some of the projects I dug up from my high school and col
 
 [View the code](https://github.com/simon-duchastel/advent-of-code-2020)
 
-In 2020 I participated in the [Advent of Code (AoC)](https://adventofcode.com/2021/about). I didn't complete it (I got to day 11/24), but it was a fun little exercise to do after work to take my mind off things.
+In 2020 I participated in the [Advent of Code (AoC)](https://adventofcode.com/2021/about). I didn't complete it (I got to day 11 out of 24), but it was a fun little exercise to do after work to take my mind off things.
 
 My solutions weren't very clever. I often took the naive approach or the close-to-naive approach. Since I write code all day long though, it was nice to write code without consequence. I learned a few things:
 - how functional program with _fold()_ is supposed to work, and that I really like it.
@@ -34,7 +34,7 @@ It doesn't do much, but we got our friend to do the art on it and that alone is 
 
 [View the code](https://github.com/simon-duchastel/cropconnect)
 
-At the very beginning of the COVID-19 Pandemic, I was stuck in a tiny 100 square foot student apartment in [Lausanne, Switzerland](https://en.wikipedia.org/wiki/Lausanne). I was mid-way through a study abroad program at the nearby University, ÉPFL. Although I eventually managed to return home to the US rather than wait it out in my tiny Swiss apartment (a very smart choice in retrospect), I was still both very busy with my last schoolwork and interested in a distraction from the ongoing pandemic.
+At the very beginning of the COVID-19 Pandemic, I was stuck in a tiny 100 square foot student apartment in [Lausanne, Switzerland](https://en.wikipedia.org/wiki/Lausanne). I was mid-way through a study abroad program at the nearby University, ÉPFL. Even though I did eventually managed to return home to the US rather than wait it out in my tiny Swiss apartment (a pretty smart choice in retrospect), I was still both very busy with my last schoolwork and interested in a distraction from the ongoing pandemic.
 
 Some friends from ÉPFL contacted me about a hackathon the university had put together and asked if I was interested in participating. I let them know I had limited time but would be interested to use it as an opportunity to mess with web development (something I was and still am very bad at).
 

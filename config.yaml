@@ -10,10 +10,10 @@ params:
       title: "Simon Duchastel"
       subtitle: "Software Engineer | Scifi Fan | Transit Enthusiast"
       buttons:
-          - name: Stories
-            url: "/stories"
-          - name: Projects
-            url: "/projects"
+          # - name: Stories
+            # url: "/stories"
+          # - name: Projects
+            # url: "/projects"
           - name: Resume
             url: "resume.pdf"
   socialIcons:

@@ -52,12 +52,11 @@ As I mentioned before, I fully admit that I am far from being a gradle wizard. T
 
 Hopefully, as KMP matures its build process will likewise get more understandable. When you have to build across three different platforms (and more when you consider all the sub-configurations for each platform), I imagine there's always going to be a certain level of complexity. However, for those of us not wanting to do anything too fancy that complexity should be more-or-less hidden if Jetbrains wants KMP to become more widely adopted.
 
-## Next Steps
+## Takeaways
 
-I plan to continue working on this project and have a few ideas for things to do to wrap it up:
+This project was a lot of fun to do, and when it comes to things I do in my free time that's really the only goal! However, there were a few things I learned:
+- functional programming is a lot of fun and well-suited to many problems.
+- as an obvious statement, there are also a lot of problems that are a lot more intuitive to solve without having to force-in a call to `fold`.
+- Kotlin Multiplatform has a lot of potential, but it has its rough edges and its build system can be very frustrating to use.
 
-- Finish the remaining eleven problems.
-- Generate a basic app Android app to solve the problems
-- Generate a basic website to solve the problems
-
-This isn't meant to be actually useful and is just something I'm doing for fun, so I'll try to keep it up casually in my free time. TBD when it gets done, but I'm hoping to post more about my Advent of Code 2021 work soon!
+I'll keep my eye on KMP (in no small part because my team at 98point6 is increasingly adopting it as a core part of its technology stack). It's got some good bones though and I hope to soon be building more native apps across Android, iOS, Web, and maybe even Desktop using KMP!
