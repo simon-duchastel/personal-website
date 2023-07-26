@@ -7,11 +7,12 @@ import (
 )
 
 func main() {
+    programName := os.Args[0] // first arg is program name
     args := os.Args[1:] // ignore the first arg (program name)
     if len(args) != 1 {
         fmt.Println("Must provide exactly one command")
         fmt.Println()
-        printHelp()
+        printHelp(programName)
         return
     }
 
@@ -20,11 +21,11 @@ func main() {
     case "preview":
         startServer()
     case "help":
-        printHelp()
+        printHelp(programName)
     default:
         fmt.Println("Invalid command '" + command + "'")
         fmt.Println()
-        printHelp()
+        printHelp(programName)
     }
 }
 
@@ -32,8 +33,8 @@ func main() {
 // Commands
 ////////
 
-func printHelp() {
-    fmt.Println("Usage: website [command]")
+func printHelp(programName string) {
+    fmt.Println("Usage: " + programName + " [command]")
 
     fmt.Println()
     
