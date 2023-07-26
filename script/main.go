@@ -17,14 +17,16 @@ func main() {
 
     // parse the args and execute relevant command
     switch command := args[0]; command {
-    case "preview":
+    case "preview": // preview the website on a local server
         startServer()
-    case "build":
+    case "build": // build the website
         build()
-    case "upload":
-        // TODO
-    case "deploy":
-        // TODO
+    case "upload": // upload the website
+        upload()
+    case "deploy": // convenience command for build + upload
+        if build() != nil {
+            upload() // only upload if there was no error building
+        }
     case "help":
         printHelp()
     default:
@@ -45,13 +47,15 @@ func printHelp() {
     fmt.Println()
     
     fmt.Println("Commands:")
-    fmt.Println("build   - Build the website, overwriting the /public directory")
-    fmt.Println("preview - Start a local server for previewing the website")
-    fmt.Println("help    - Print this help text")
+    fmt.Println("  build   - Build the website, overwriting the /public directory")
+    fmt.Println("  deploy  - Build and upload the latest version of the website to simon.duchastel.com")
+    fmt.Println("  preview - Start a local server for previewing the website")
+    fmt.Println("  upload  - Upload the built website and host it at simon.duchastel.com")
+    fmt.Println("  help    - Print this help text")
 }
 
 // Starts the server and launches the browser to view it
-func startServer() {
+func startServer() error {
     fmt.Println("=============================")
     fmt.Println("Starting local preview server")
     fmt.Println("=============================")
@@ -60,36 +64,45 @@ func startServer() {
     if err := cmd.Start(); err != nil {
         fmt.Println("Error starting command 'hugo server'")
         fmt.Println(err)
-        return
+        return err
     }
 
     if err := exec.Command("x-www-browser", "http://localhost:1313").Run(); err != nil {
         fmt.Println("Error running command 'x-www-browser http://localhost:1313'")
         fmt.Println(err)
-        return
+        return err
     }
 
     if err := cmd.Wait(); err != nil {
         fmt.Println("Error in command 'hugo server'")
         fmt.Println(err)
-        return
+        return err
     }
+
+    return nil
 }
 
 // Build the website, which places it in the /public directory
-func build() {
+func build() error {
     // Clear the /public directory to ensure clean build
     if err := os.RemoveAll("public"); err != nil {
        fmt.Println("Error clearing /public directory")
-       return
+       return err
     }
 
     // build the website
     if err := exec.Command("hugo").Run(); err != nil {
         fmt.Println("Error running command 'hugo'")
         fmt.Println(err)
-        return
+        return err
     }
+
+    return nil
+}
+
+// Upload the website to the webserver
+func upload() error {
+    return nil
 }
 
 
