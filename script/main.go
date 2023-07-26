@@ -39,8 +39,8 @@ func printHelp() {
     fmt.Println()
     
     fmt.Println("Commands:")
-    fmt.Println("help    - Print this help text")
     fmt.Println("preview - Start a local server for previewing the website")
+    fmt.Println("help    - Print this help text")
 }
 
 // Starts the server and launches the browser to view it
