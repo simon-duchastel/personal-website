@@ -19,6 +19,12 @@ func main() {
     switch command := args[0]; command {
     case "preview":
         startServer()
+    case "build":
+        build()
+    case "upload":
+        // TODO
+    case "deploy":
+        // TODO
     case "help":
         printHelp()
     default:
@@ -39,6 +45,7 @@ func printHelp() {
     fmt.Println()
     
     fmt.Println("Commands:")
+    fmt.Println("build   - Build the website, overwriting the /public directory")
     fmt.Println("preview - Start a local server for previewing the website")
     fmt.Println("help    - Print this help text")
 }
@@ -53,16 +60,35 @@ func startServer() {
     if err := cmd.Start(); err != nil {
         fmt.Println("Error starting command 'hugo server'")
         fmt.Println(err)
+        return
     }
 
     if err := exec.Command("x-www-browser", "http://localhost:1313").Run(); err != nil {
-        fmt.Println("Error running command 'x-www-browser https://localhost:1313'")
+        fmt.Println("Error running command 'x-www-browser http://localhost:1313'")
         fmt.Println(err)
+        return
     }
 
     if err := cmd.Wait(); err != nil {
         fmt.Println("Error in command 'hugo server'")
         fmt.Println(err)
+        return
+    }
+}
+
+// Build the website, which places it in the /public directory
+func build() {
+    // Clear the /public directory to ensure clean build
+    if err := os.RemoveAll("public"); err != nil {
+       fmt.Println("Error clearing /public directory")
+       return
+    }
+
+    // build the website
+    if err := exec.Command("hugo").Run(); err != nil {
+        fmt.Println("Error running command 'hugo'")
+        fmt.Println(err)
+        return
     }
 }
 
