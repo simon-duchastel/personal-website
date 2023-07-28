@@ -3,3 +3,6 @@ public/*
 
 # don't include the ./website helper binary
 website
+
+# don't include config files
+ssh.config
