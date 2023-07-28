@@ -24,25 +24,31 @@ func main() {
 	}
 
 	// parse the args and execute relevant command
+	var err error
 	switch command := args[0]; command {
 	case "preview": // preview the website on a local server
-		startServer()
+		err = startServer()
 	case "build": // build the website
-		build()
+		err = build()
 	case "upload": // upload the website
-		upload()
+		err = upload()
 	case "deploy": // convenience command for build + upload
-		if build() == nil {
-			upload() // only upload if there was no error building
+		if err = build(); err == nil {
+			err = upload() // only upload if there was no error building
 		}
 	case "rotatecert": // rotate the ssl (https) cert for the website
-		rotateCert()
+		err = rotateCert()
 	case "help":
 		printHelp()
+		err = errors.New("No command run")
 	default:
 		fmt.Println("Error: Invalid command '" + command + "'")
 		fmt.Println()
 		printHelp()
+		err = errors.New("Invalid command")
+	}
+	if err == nil {
+		fmt.Println("Success!")
 	}
 }
 
@@ -62,7 +68,7 @@ func printHelp() {
 	fmt.Println("  preview     - Start a local server for previewing the website")
 	fmt.Println("  upload      - Upload the built website and host it at simon.duchastel.com")
 	fmt.Println("  rotatecert  - Rotate the ssl (https) cert for simon.duchastel.com, duchastel.com, and duchastel.org")
-	fmt.Println("  help    - Print this help text")
+	fmt.Println("  help        - Print this help text")
 }
 
 // Starts the server and launches the browser to view it
@@ -135,6 +141,8 @@ func upload() error {
 	fmt.Println("Removing old website on webhost")
 
 	// TODO - upload hugo site to public_html/simon.duchastel.com directory
+
+	runRemoteCommand(client, "ls -la")
 
 	return nil
 }
