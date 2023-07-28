@@ -32,9 +32,11 @@ func main() {
 	case "upload": // upload the website
 		upload()
 	case "deploy": // convenience command for build + upload
-		if build() != nil {
+		if build() == nil {
 			upload() // only upload if there was no error building
 		}
+	case "rotatecert": // rotate the ssl (https) cert for the website
+		rotateCert()
 	case "help":
 		printHelp()
 	default:
@@ -55,16 +57,17 @@ func printHelp() {
 	fmt.Println()
 
 	fmt.Println("Commands:")
-	fmt.Println("  build   - Build the website, overwriting the /public directory")
-	fmt.Println("  deploy  - Build and upload the latest version of the website to simon.duchastel.com")
-	fmt.Println("  preview - Start a local server for previewing the website")
-	fmt.Println("  upload  - Upload the built website and host it at simon.duchastel.com")
+	fmt.Println("  build       - Build the website, overwriting the /public directory")
+	fmt.Println("  deploy      - Build and upload the latest version of the website to simon.duchastel.com")
+	fmt.Println("  preview     - Start a local server for previewing the website")
+	fmt.Println("  upload      - Upload the built website and host it at simon.duchastel.com")
+	fmt.Println("  rotatecert  - Rotate the ssl (https) cert for simon.duchastel.com, duchastel.com, and duchastel.org")
 	fmt.Println("  help    - Print this help text")
 }
 
 // Starts the server and launches the browser to view it
 func startServer() error {
-	fmt.Println("Starting local preview server")
+	fmt.Println("Starting local preview server...")
 
 	cmd := exec.Command("hugo", "server")
 	if err := cmd.Start(); err != nil {
@@ -91,12 +94,14 @@ func startServer() error {
 // Build the website, which places it in the /public directory
 func build() error {
 	// clear the /public directory to ensure clean build
+	fmt.Println("Clearing /public directory")
 	if err := os.RemoveAll("public"); err != nil {
 		fmt.Println("Error: cannot clear /public directory")
 		return err
 	}
 
 	// build the website
+	fmt.Println("Building website")
 	if err := exec.Command("hugo").Run(); err != nil {
 		fmt.Println("Error: cannot run command 'hugo'")
 		fmt.Println(err)
@@ -106,8 +111,9 @@ func build() error {
 	return nil
 }
 
-// Upload the website to the webserver
+// Upload the website to the webhost
 func upload() error {
+	fmt.Println("Connecting to webhost")
 	// get the login configuration
 	config, err := getSshClientConfig()
 	if err != nil {
@@ -123,11 +129,24 @@ func upload() error {
 	}
 	defer client.Close()
 
-	runCommand(client, "ls")
+	runRemoteCommand(client, "ls")
 
 	// TODO - clear out public_html/simon.duchastel.com directory
+	fmt.Println("Removing old website on webhost")
 
 	// TODO - upload hugo site to public_html/simon.duchastel.com directory
+
+	return nil
+}
+
+// Rotate the ssl (https) cert for the simon.duchastel.com, duchastel.com, and
+// duchastel.org domains
+func rotateCert() error {
+	if err := exec.Command("hugo").Run(); err != nil {
+		fmt.Println("Error: cannot run command 'hugo'")
+		fmt.Println(err)
+		return err
+	}
 
 	return nil
 }
@@ -215,7 +234,7 @@ func getSshClientConfig() (*sshConfig, error) {
 }
 
 // Run a command on the remote host via ssh and print its output to console
-func runCommand(client *ssh.Client, command string) error {
+func runRemoteCommand(client *ssh.Client, command string) error {
 	// start an interactive session
 	session, err := client.NewSession()
 	if err != nil {
