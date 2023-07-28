@@ -9,7 +9,7 @@ import (
 func main() {
     args := os.Args[1:] // ignore the first arg (program name)
     if len(args) != 1 {
-        fmt.Println("Must provide exactly one command")
+        fmt.Println("Error: Must provide exactly one command")
         fmt.Println()
         printHelp()
         return
@@ -30,7 +30,7 @@ func main() {
     case "help":
         printHelp()
     default:
-        fmt.Println("Invalid command '" + command + "'")
+        fmt.Println("Error: Invalid command '" + command + "'")
         fmt.Println()
         printHelp()
     }
@@ -62,19 +62,19 @@ func startServer() error {
 
     cmd := exec.Command("hugo", "server")
     if err := cmd.Start(); err != nil {
-        fmt.Println("Error starting command 'hugo server'")
+        fmt.Println("Error: cannot run command 'hugo server'")
         fmt.Println(err)
         return err
     }
 
     if err := exec.Command("x-www-browser", "http://localhost:1313").Run(); err != nil {
-        fmt.Println("Error running command 'x-www-browser http://localhost:1313'")
+        fmt.Println("Error: cannot run command 'x-www-browser http://localhost:1313'")
         fmt.Println(err)
         return err
     }
 
     if err := cmd.Wait(); err != nil {
-        fmt.Println("Error in command 'hugo server'")
+        fmt.Println("Error: cannot run command 'hugo server'")
         fmt.Println(err)
         return err
     }
@@ -86,13 +86,13 @@ func startServer() error {
 func build() error {
     // Clear the /public directory to ensure clean build
     if err := os.RemoveAll("public"); err != nil {
-       fmt.Println("Error clearing /public directory")
+       fmt.Println("Error: cannot clear /public directory")
        return err
     }
 
     // build the website
     if err := exec.Command("hugo").Run(); err != nil {
-        fmt.Println("Error running command 'hugo'")
+        fmt.Println("Error: cannot run command 'hugo'")
         fmt.Println(err)
         return err
     }

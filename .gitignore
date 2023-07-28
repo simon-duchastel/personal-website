@@ -1,2 +1,5 @@
 # don't include the generated site
 public/*
+
+# don't include the ./website helper binary
+website
