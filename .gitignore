@@ -1,5 +1,6 @@
-# don't include the generated site
+# don't include any output/bin directories (public/ is for hugo)
 public/*
+bin/*
 
 # don't include the ./website helper binary
 website
