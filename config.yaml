@@ -12,8 +12,8 @@ params:
       buttons:
           # - name: Stories # uncoment when ready to share short stories
             # url: "/stories"
-          - name: Posts # uncomment when ready to share posts
-            url: "/posts"
+          # - name: Posts # uncomment when ready to share posts
+            # url: "/posts"
           - name: Resume
             url: "resume.pdf"
   socialIcons:
