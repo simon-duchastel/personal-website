@@ -158,7 +158,7 @@ func upload() error {
 	for _, file := range files {
 		destinationFile := SITE_OLD_DIRECTORY + "/" + strings.TrimPrefix(file, websiteRoot+"/")
 
-		fmt.Println("Downloading " + file + " to " + destinationFile)
+		fmt.Println("  Downloading " + file)
 		if err := downloadRemoteFile(client, file, destinationFile); err != nil {
 			return err
 		}
@@ -176,8 +176,11 @@ func upload() error {
 
 		if !file.IsDir() && len(path) > 0 {
 			uploadFilePath := websiteRoot + "/" + strings.TrimPrefix(path, HUGO_BUILD_DIRECTORY+"/")
-			fmt.Println("Uploading " + path + " to " + uploadFilePath)
-			uploadFile(client, path, uploadFilePath)
+			fmt.Println("  Uploading " + path)
+			if err := uploadFile(client, path, uploadFilePath); err != nil {
+				fmt.Println("Error: failed to upload file '" + path + "'")
+				return err
+			}
 		}
 		return nil
 	}); err != nil {
@@ -333,9 +336,9 @@ func remoteFileIsDirectory(client *ssh.Client, filePath string) (bool, error) {
 }
 
 // Upload a file with the given ssh client.
-// [filePath] is the path to the file (including filename)
+// [sourceFilePath] is the path to the file (including filename)
 // [destinationFilePath] is the path to the file on the remote host (including filename)
-func uploadFile(client *ssh.Client, filePath, destinationFilePath string) error {
+func uploadFile(client *ssh.Client, sourceFilePath, destinationFilePath string) error {
 	scpClient, err := scp.NewClientBySSH(client)
 	if err != nil {
 		fmt.Println("Error: failed to create file-transfer client")
@@ -348,18 +351,47 @@ func uploadFile(client *ssh.Client, filePath, destinationFilePath string) error 
 	}
 	defer scpClient.Close()
 
-	fileToUpload, err := os.Open(filePath)
+	// open the file to transfer
+	fileToUpload, err := os.Open(sourceFilePath)
 	if err != nil {
-		fmt.Println("Error: unable to open file '" + filePath + "'")
+		fmt.Println("Error: unable to open file '" + sourceFilePath + "'")
 		return err
 	}
 	defer fileToUpload.Close()
 
-	if err := scpClient.CopyFromFile(context.Background(), *fileToUpload, destinationFilePath, READ_ONLY_FILE); err != nil {
-		fmt.Println("Error: failed to copy file ' " + filePath + "' to remote server")
+	// create all transitive directories
+	if err := createDirAllRemote(client, filepath.Dir(destinationFilePath)); err != nil {
 		return err
 	}
 
+	// copy the file to the remote host
+	if err := scpClient.CopyFromFile(context.Background(), *fileToUpload, destinationFilePath, READ_ONLY_FILE); err != nil {
+		fmt.Println("Error: failed to copy file ' " + sourceFilePath + "' to remote server")
+		return err
+	}
+
+	return nil
+}
+
+// Create the directory [dirPath], including all transitive directories
+// which do not yet exist, on the remote host
+func createDirAllRemote(client *ssh.Client, dirPath string) error {
+	allSubDirectories := strings.Split(dirPath, "/")
+	directoryToCreate := ""
+	for _, dir := range allSubDirectories {
+		cleanedDir := strings.TrimSpace(dir)
+		if len(cleanedDir) <= 0 {
+			continue // skip any empty strings
+		}
+		directoryToCreate = directoryToCreate + "/" + cleanedDir
+
+		// '|| echo true' ignores the exit code error and defaults to success (0) if mkdir fails
+		_, err := runRemoteCommand(client, "mkdir "+directoryToCreate+" || echo true")
+		if err != nil {
+			fmt.Println("Error: failed to create transitive directories for file '" + dirPath + "'")
+			return err
+		}
+	}
 	return nil
 }
 
