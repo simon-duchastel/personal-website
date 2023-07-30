@@ -10,9 +10,9 @@ params:
       title: "Simon Duchastel"
       subtitle: "Software Engineer | Scifi Fan | Transit Enthusiast"
       buttons:
-          # - name: Stories
+          # - name: Stories # uncoment when ready to share short stories
             # url: "/stories"
-          # - name: Projects
+          # - name: Projects # uncomment when ready to share thoughts on projects
             # url: "/projects"
           - name: Resume
             url: "resume.pdf"

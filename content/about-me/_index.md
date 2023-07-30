@@ -8,7 +8,7 @@ Hello, and welcome to my website! I'm Simon Duchastel, a software engineer livin
 
 Professionally, I mainly develop mobile apps. I have the most experience creating native Android app experiences using Kotlin and Kotlin Multiplatform. I've also worked on backend systems developing RESTful APIs in Java and microservices in a serverless architecture within AWS.
 
-Outside of work, I enjoy reading (and very occasionally writing) scifi stories. Some of my favorite stories include _Foundation_ by Isaac Asimov, _Dune_ by Frank Herbert, and _A Memory Called Empire_ by Arkady Martine. However, I'll read just about anything that can be classified as science fiction!
+Outside of work, I enjoy reading (and very occasionally writing) scifi stories. Some of my favorite stories include _Foundation_ by Isaac Asimov, _Dune_ by Frank Herbert, and _A Memory Called Empire_ by Arkady Martine. However, I'll read just about anything that counts as science fiction!
 
 I'm also interested in transit systems (particularly metro/subway systems) and urban development. In my free time you'll often find riding trains and keeping up with transit developments. I also volunteer for Trails & Rails, a program of the National Parks Service where I ride the Amtrak Coast Starlight from Seattle to Portland and share the fascinating history of Washington and our National Parks with passengers.
 
