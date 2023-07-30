@@ -102,10 +102,15 @@ func startServer() error {
 // Build the website, which places it in the public/ directory
 func build() error {
 	// clear the public/ directory to ensure clean build
+	// however, deleting the directory itself causes issues so recreate
+	// it after
 	fmt.Println("Clearing " + HUGO_BUILD_DIRECTORY + " directory")
 	if err := os.RemoveAll(HUGO_BUILD_DIRECTORY); err != nil {
-		fmt.Println("Error: cannot clear " + HUGO_BUILD_DIRECTORY + " directory")
+		fmt.Println("Error: failed to clear " + HUGO_BUILD_DIRECTORY + " directory")
 		return err
+	}
+	if err := os.Mkdir(HUGO_BUILD_DIRECTORY, os.ModePerm); err != nil {
+		fmt.Println("Error: failed to create " + HUGO_BUILD_DIRECTORY + " directory")
 	}
 
 	// build the website
