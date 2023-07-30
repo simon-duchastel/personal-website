@@ -27,4 +27,4 @@ menu:
   main:
     - identifier: about
       name: "About Me"
-      url: "/about-me"
+      url: "/about"
