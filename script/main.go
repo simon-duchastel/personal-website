@@ -102,10 +102,15 @@ func startServer() error {
 // Build the website, which places it in the public/ directory
 func build() error {
 	// clear the public/ directory to ensure clean build
+	// however, deleting the directory itself causes issues so recreate
+	// it after
 	fmt.Println("Clearing " + HUGO_BUILD_DIRECTORY + " directory")
 	if err := os.RemoveAll(HUGO_BUILD_DIRECTORY); err != nil {
-		fmt.Println("Error: cannot clear " + HUGO_BUILD_DIRECTORY + " directory")
+		fmt.Println("Error: failed to clear " + HUGO_BUILD_DIRECTORY + " directory")
 		return err
+	}
+	if err := os.Mkdir(HUGO_BUILD_DIRECTORY, os.ModePerm); err != nil {
+		fmt.Println("Error: failed to create " + HUGO_BUILD_DIRECTORY + " directory")
 	}
 
 	// build the website
@@ -147,10 +152,10 @@ func upload() error {
 	}
 
 	// clear bin/website-old/ directory in preparation for storing old website
-	// if err := os.RemoveAll(SITE_OLD_DIRECTORY); err != nil {
-	// 	fmt.Println("Error: cannot clear '" + SITE_OLD_DIRECTORY + "' directory")
-	// 	return err
-	// }
+	if err := os.RemoveAll(SITE_OLD_DIRECTORY); err != nil {
+		fmt.Println("Error: cannot clear '" + SITE_OLD_DIRECTORY + "' directory")
+		return err
+	}
 
 	if len(files) <= 0 {
 		fmt.Println("    Nothing to download")
@@ -165,7 +170,9 @@ func upload() error {
 	}
 
 	fmt.Println("Removing old website from webhost")
-	// runRemoteCommandToConsole(client, "rm -rf "+websiteRoot+"/*") // delete everything in the website directory
+	if _, err := runRemoteCommand(client, "rm -rf "+websiteRoot+"/*"); err != nil { // delete everything in the website directory
+		return err
+	}
 
 	fmt.Println("Uploading new website to webhost")
 	if err := filepath.WalkDir(HUGO_BUILD_DIRECTORY, func(path string, file fs.DirEntry, walkErr error) error {

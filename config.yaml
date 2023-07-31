@@ -12,8 +12,8 @@ params:
       buttons:
           # - name: Stories # uncoment when ready to share short stories
             # url: "/stories"
-          - name: Projects # uncomment when ready to share thoughts on projects
-            url: "/projects"
+          - name: Posts
+            url: "/posts"
           - name: Resume
             url: "resume.pdf"
   socialIcons:
@@ -27,4 +27,4 @@ menu:
   main:
     - identifier: about
       name: "About Me"
-      url: "/about-me"
+      url: "/about"
