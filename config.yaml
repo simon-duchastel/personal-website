@@ -1,4 +1,4 @@
-baseURL: 'http://simon.duchastel.com/'
+baseURL: 'https://simon.duchastel.com/'
 languageCode: 'en-us'
 title: "Simon Duchastel"
 paginate: 10
@@ -10,22 +10,21 @@ params:
       title: "Simon Duchastel"
       subtitle: "Software Engineer | Scifi Fan | Transit Enthusiast"
       buttons:
-          - name: Stories
-            url: "/stories"
-          - name: Projects
-            url: "/projects"
+          # - name: Stories # uncoment when ready to share short stories
+            # url: "/stories"
+          # - name: Posts # uncomment when ready to share posts
+            # url: "/posts"
+          - name: Resume
+            url: "resume.pdf"
   socialIcons:
       - name: "github"
         url: "https://github.com/simon-duchastel"
       - name: "linkedin"
         url: "https://www.linkedin.com/in/simonduchastel/"
-      - name: "email"
-        url: "mailto://***REMOVED***"
+      - name: "facebook"
+        url: "https://www.facebook.com/simonduchastel/"
 menu:
   main:
     - identifier: about
       name: "About Me"
-      url: "/about-me"
-      
-taxonomies:
-  project-tag: project-tags
+      url: "/about"
