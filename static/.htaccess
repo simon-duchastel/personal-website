@@ -1,0 +1,2 @@
+# default 404 page is 404.shtml - we change it to 404.html
+FallbackResource /404.html
