@@ -3,9 +3,9 @@ title: "Advent of Code 2021"
 date: 2022-01-18
 ---
 
-[View the code](https://github.com/simon-duchastel/advent-of-code-2021)
+_[View the code](https://github.com/simon-duchastel/advent-of-code-2021)_
 
-This year (or should I say last year now), I wanted to use Advent of Code as an excuse to try something new. I thought of using Rust since my coworkers are using it on their teams and it seems like a cool language, but I decided instead to use [Kotlin Multiplatform (KMP)](https://kotlinlang.org/docs/multiplatform.html) since I'm more familiar with Kotlin and wanted to try out the Multiplatform compilers. Maybe I'll do Rust next year.
+This year (or should I say last year now), I wanted to use [Advent of Code](https://adventofcode.com) as an excuse to try something new. I thought of using Rust since my coworkers are using it on their teams and it seems like a cool language, but I decided instead to use [Kotlin Multiplatform (KMP)](https://kotlinlang.org/docs/multiplatform.html) since I'm more familiar with Kotlin and wanted to try out the Multiplatform compilers. Maybe I'll do Rust next year.
 
 ## Kotlin Multiplatform
 
@@ -36,17 +36,17 @@ You can find my code on Github here: https://github.com/simon-duchastel/advent-o
 
 ## Things I Learned
 
-#### I still like fold()
+### I still like fold()
 
 [As I noted last year](/posts/older-projects#advent-of-code-2020), I really enjoy certain aspects of functional programming — one of them being the fold() function. I think I used fold() in almost every single problem this year and tried to use imperative patterns sparingly. There were many times where I think that avoiding mutability helped me in these problems (although there were also a few times though where it led me to make mistakes and have a more complicated solution).
 
-#### Kotlin Multiplatform seems to be meant for use in libraries
+### Kotlin Multiplatform seems to be meant for use in libraries
 
 It seems to me that KMP's intended use case is building libraries for other native projects. This makes sense as a way to have shared business logic that can be slotted into native applications, which seems to be Jetbrains' (the developer of Kotlin) goal.
 
 For example, I had difficulty getting Kotlin Multiplatform to compile to a standalone .jar rather than a library. I could get a .jar built, but defining an entry-point to the Kotlin program didn't seem to work in my Multiplatform gradle project. I'll admit this was compounded by gradle errors on my part, but it does seem like KMP encourages you to use it for shared libraries and is not yet mature for other use cases.
 
-#### The build process is rough around the edges
+### The build process is rough around the edges
 
 As I mentioned before, I'm not a gradle expert. That said, my day job as an Android developer has made me pretty familiar with gradle. Kotlin Multiplatform has a very complex build system configuration and the multiplatform gradle plugin that's included does a lot of _* magic *_ under the covers. Understanding how to configure the build system was a challenge.
 

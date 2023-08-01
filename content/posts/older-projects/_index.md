@@ -7,9 +7,9 @@ As the first post for this website I thought it would be cool to reflect on some
 
 ## Advent of Code 2020
 
-[View the code](https://github.com/simon-duchastel/advent-of-code-2020)
+_[View the code](https://github.com/simon-duchastel/advent-of-code-2020)_
 
-In 2020 I participated in the [Advent of Code (AoC)](https://adventofcode.com/2021/about). I didn't complete it (I got to day 11 out of 24), but it was a fun exercise to do after work.
+In 2020 I participated in the [Advent of Code](https://adventofcode.com/2021/about). I didn't complete it (I got to day 11 out of 24), but it was a fun exercise to do after work.
 
 My solutions weren't very clever. I often took the naive approach. However, it was nice to write code without worrying about shipping it to production and maintaining it. I learned a few things:
 1. how to use _fold()_ in a functional programming paradigm and that it's a lot of fun to use.
@@ -18,7 +18,7 @@ My solutions weren't very clever. I often took the naive approach. However, it w
 
 ## Nebula Mobile Game
 
-[View the code](https://github.com/ray-fung/Nebula)
+_[View the code](https://github.com/ray-fung/Nebula)_
 
 At the end of our senior year in high school my friend Ray and I worked on a game we called Nebula. It never went anywhere and it was more of an opportunity to try out Unity than anything, but it was fun to work with him and figure out how games worked.
 
@@ -30,7 +30,7 @@ It doesn't do much, but we got our friend to do some art of asteroids and spaces
 
 ## CropConnect
 
-[View the code](https://github.com/simon-duchastel/cropconnect)
+_[View the code](https://github.com/simon-duchastel/cropconnect)_
 
 At the very beginning of the COVID-19 Pandemic, I was stuck in a tiny 100 square foot student apartment in [Lausanne, Switzerland](https://en.wikipedia.org/wiki/Lausanne). I was mid-way through a study abroad program at the nearby University, ÉPFL. Even though I did eventually managed to return home to the US rather than wait it out in my tiny Swiss apartment (a pretty smart choice in retrospect), I was still in touch with some students at the university.
 
