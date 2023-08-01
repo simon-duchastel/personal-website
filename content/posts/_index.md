@@ -2,4 +2,4 @@
 title: "Posts"
 ---
 
-Here I've blog posts about things (mostly software) I've done in my free time.
+Here I've written blog posts about things I've done in my free time (mostly software).
