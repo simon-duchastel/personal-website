@@ -1,6 +1,18 @@
 ---
 title: "Creating my website with Hugo + Go"
-date: 2023-08-02
+date: 2023-07-20
 ---
 
-Lorem ipsum
+
+
+## Goals
+
+
+## Building the website with Hugo
+
+
+## Go tool for uploading the website
+
+
+## Next steps
+

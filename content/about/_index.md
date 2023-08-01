@@ -8,7 +8,7 @@ Hello, and welcome to my personal website! I'm Simon Duchastel, a software engin
 
 This website is a way for me to catalog and reflect on the stuff I do in my spare time. I mostly write about hobby software projects. This website is itself a hobby project — I built it with [Hugo](https://gohugo.io).
 
-Professionally, I currently build native Android apps using Kotlin and Kotlin Multiplatform. I also have experience working on backend systems developing RESTful APIs in Java and microservices in a serverless architecture in AWS. If you're interested in my professional work as a software developer, you can find my resume here: [{{< baseUrl >}}resume.pdf](../resume.pdf).
+For my day job, I'm currently building Android apps. I also have experience with backend systems developing RESTful APIs and microservices in a serverless architecture. If you're interested in my work professionally as a software developer, you can find my resume here: [{{< baseUrl >}}](../resume.pdf).
 
 I enjoy reading science fiction. Some of my favorite stories include _Foundation_ by Isaac Asimov, _Dune_ by Frank Herbert, and _A Memory Called Empire_ by Arkady Martine. However, I'll read just about anything scifi!
 
