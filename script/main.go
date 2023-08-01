@@ -430,7 +430,7 @@ func downloadRemoteFile(client *ssh.Client, remoteFileLocation, destinationFileN
 // the remote directory specified by [remoteDirectoryPath]. Includes
 // recursive files, ie. listing remote files in /foo will list /foo/bar/baz.txt
 func listRemoteFiles(client *ssh.Client, remoteDirectoryPath string) ([]string, error) {
-	buffer, err := runRemoteCommand(client, "ls -A "+remoteDirectoryPath)
+	buffer, err := runRemoteCommand(client, "find "+remoteDirectoryPath+" -type f")
 	if err != nil {
 		return nil, err
 	}
@@ -448,28 +448,7 @@ func listRemoteFiles(client *ssh.Client, remoteDirectoryPath string) ([]string, 
 		if len(trimmedFile) <= 0 {
 			continue
 		}
-		fullFileName := remoteDirectoryPath + "/" + trimmedFile
-
-		isFile, err := remoteFileIsFile(client, fullFileName)
-		if err != nil {
-			return nil, err
-		}
-
-		isDirectory, err := remoteFileIsDirectory(client, fullFileName)
-		if err != nil {
-			return nil, err
-		}
-
-		if isFile {
-			filesToReturn = append(filesToReturn, fullFileName)
-		}
-		if isDirectory {
-			recursiveFiles, err := listRemoteFiles(client, fullFileName)
-			if err != nil {
-				return nil, err
-			}
-			filesToReturn = append(filesToReturn, recursiveFiles...)
-		}
+		filesToReturn = append(filesToReturn, trimmedFile)
 	}
 
 	return filesToReturn, nil
