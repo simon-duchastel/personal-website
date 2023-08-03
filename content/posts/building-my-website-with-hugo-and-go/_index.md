@@ -23,7 +23,7 @@ After more than a year of creating the simon.duchastel.com website and hosting a
 
 I'm a big fan of learning from first principles, where I understand what's happening underneath the covers before building up to the higher-level concepts. Partially for that reason, I wanted to build my website as a static site because after I'm done building my website I could read through the html/javascript/css code which was generated to deeply understand what was happening to my website. On top of that, I could tweak the low-level code fairly easily and run it locally in my browser to further understand how changes impacted the final website.
 
-There are other advantages to a static site. For one, it's very easy to host and requires only a basic webserver to run (another consideration is that my webhost, GoDaddy, charges extra). Additionally, if the tool becomes deprecated, unavailable, or otherwise stops working then you still have static html that you can host and tweak indefinitely.
+There are other advantages to a static site. For one, it's very easy to host and requires only a basic web server to run (another consideration is that my web host, GoDaddy, charges extra). Additionally, if the tool becomes deprecated, unavailable, or otherwise stops working then you still have static html that you can host and tweak indefinitely.
 
 ### Using Hugo
 
