@@ -28,3 +28,5 @@ menu:
     - identifier: about
       name: "About Me"
       url: "/about"
+taxonomies:
+  # Don't include any taxonomies - by default categories and tags are provided
