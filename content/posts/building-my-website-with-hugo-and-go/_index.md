@@ -5,17 +5,15 @@ date: 2023-08-01
 
 _[View the code](https://github.com/simon-duchastel/personal-website)_
 
-Twenty years ago, my father and cousin bought the domain duchastel.com (my last name is Duchastel). Initially they hosted bios for some of our family members on it, but in the last few years we haven't done much with it. I'm thankful to them for buying and holding onto that domain all this time though, as it now gives me an opportunity to build and manage my own website with a sleek domain name.
-
-I like the idea of having a personal website [firstname].[lastname].com. In fact, since I published this website a few of my family members even reached out to me asking if they could get their own subdomain too.
+Twenty years ago, my father and cousin bought the domain duchastel.com (our last name). Initially my family used it to host some bios but it hasn't been updated in many years. I'm thankful to them for buying and holding onto that domain all this time though, as it now gives me an opportunity to build and manage my own website.
 
 ## Goals
 
 I had a few high-level goals which motivated me to build this website:
 
 1. Make my resume publicly accessible on the internet so that it's easier to share out
-2. Encourage myself to write more by having a place to post publicly accessible blog posts (and in the future, maybe scifi short stories). I've always been interested in writing scifi stories, and as Stephen King said "If you want to be a writer, you must do two things above all others: read a lot and write a lot".
-3. Learn more about the web by building a website more-or-less from scratch and managing my own web infrastructure
+2. Encourage myself to write more by having a place to post publicly accessible blog posts (and in the future, maybe scifi short stories). I've always been interested in writing science fiction and as Stephen King said, _"If you want to be a writer, you must do two things above all others: read a lot and write a lot"_
+3. Learn more about the web by building a website from scratch
 
 After more than a year of creating the simon.duchastel.com website and hosting a simple "Coming soon" page on there, I finally got around to publishing a real website. I decided to write this blog post both to commemorate the occasion and reflect on my experience building it.
 
@@ -23,7 +21,7 @@ After more than a year of creating the simon.duchastel.com website and hosting a
 
 ### Why a static site generator
 
-I'm a big fan of learning from first principles, where I understand what's happening underneath the covers before building up to the higher-level concepts. Partially for that reason, I wanted to build my website as a static site because after I'm done building my website I could read through the html/javascript/css code which was generated to deeply understand what was happening to my website. On top of that, I could tweak the low-level code fairly easily and run it locally in my browser to further understand how changes impacted the final website.
+I'm a big fan of learning from first principles. I believe I learn better when I first understand what's happening underneath the covers before building up to higher-level concepts. Partially for that reason, I wanted to build my website as a static site because after I'm done building my website I could read through the html/javascript/css code which was generated to deeply understand what was happening to my website. On top of that, I could tweak the low-level code fairly easily and run it locally in my browser to further understand how changes impacted the final website.
 
 There are other advantages to a static site. For one, it's very easy to host and requires only a basic web server to run (another consideration is that my web host, GoDaddy, charges extra). Additionally, if the tool becomes deprecated, unavailable, or otherwise stops working then you still have static html that you can host and tweak indefinitely.
 
