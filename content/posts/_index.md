@@ -1,5 +1,5 @@
 ---
-title: "Posts"
+title: "Software Posts"
 ---
 
-Here I write blog posts about software I've code in my free time.
+Here I write blog posts about code I've written in my free time.
