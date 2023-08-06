@@ -6,7 +6,7 @@ title: "About Me"
 
 Hello, and welcome to my personal website! I'm Simon Duchastel, a software engineer living in Seattle, Washington.
 
-This website is a way for me to catalog and reflect on the stuff I do in my spare time. I mostly write about hobby software projects. This website is itself a hobby project — I built it with [Hugo](https://gohugo.io).
+This website is a way for me to catalog and reflect on the hobbies I do in my spare time. I mostly write about coding. This website is itself a hobby project — I built it with [Hugo](https://gohugo.io).
 
 For my day job, I'm currently building Android apps. I also have experience with backend systems developing RESTful APIs and microservices in a serverless architecture. If you're interested in my work professionally as a software developer, you can find my resume here: [{{< baseUrl >}}resume.pdf](../resume.pdf).
 
