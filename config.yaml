@@ -3,8 +3,15 @@ languageCode: 'en-us'
 title: "Simon Duchastel"
 paginate: 10
 theme: "PaperMod"
+
+
+enableRobotsTXT: true
+taxonomies:
+  # Don't include any taxonomies - by default categories and tags are provided
+
 params:
   env: production
+  description: "Simon Duchastel - Software Engineer | Scifi Fan | Transit Enthusiast"
   profileMode:
       enabled: true
       title: "Simon Duchastel"
@@ -16,6 +23,7 @@ params:
         url: "https://www.linkedin.com/in/simonduchastel/"
       - name: "facebook"
         url: "https://www.facebook.com/simonduchastel/"
+
 menu:
   main:
     - name: Software Posts
@@ -44,5 +52,3 @@ menu:
     - name: "About Me"
       url: "/about"
       weight: 50
-taxonomies:
-  # Don't include any taxonomies - by default categories and tags are provided
