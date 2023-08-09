@@ -29,11 +29,9 @@ menu:
     - name: Software Posts
       url: "/posts"
       weight: 10
-
-    # uncomment once book reviews are ready
-    # - name : Book Reviews
-    #   url: "/reviews"
-    #   weight: 20
+    - name : Book Reviews
+      url: "/reviews"
+      weight: 20
 
     # uncoment once short stories are ready to share
     # - name: Stories
