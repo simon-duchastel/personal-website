@@ -1,0 +1,71 @@
+/* hide mobile menu and button for desktop-sized screens */
+#menu.mobile-menu {
+    display: none;
+}
+#mobile-menu-button {
+    display: none;
+}
+
+/* show mobile menu (and hide desktop menu) for mobile-sized screens, hide desktop menu */
+@media screen and (max-width: 800px) {
+    #menu {
+        display: none;
+    }
+
+    #menu.mobile-menu {
+        display: block;
+        text-align: center;
+
+        /*
+         *  We use a hack here to get a simple height-animation to work.
+         *  Height of `auto` can't be animated, but max-height can be so
+         *  we set a larger-than-expected max-height and animate that.
+         *  See here: https://css-tricks.com/using-css-transitions-auto-dimensions/#aa-technique-1-max-height
+        */
+        height: 0px;
+        overflow: hidden;
+        max-height: 0px;
+
+        transition: 0.7s;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    #menu.mobile-menu.open {
+        height: auto;
+        max-height: 300px;
+
+        visibility: visible;
+        opacity: 1.0;
+    }
+
+    #menu.mobile-menu li {
+        margin-inline-start: var(--gap);
+    }
+    
+    #mobile-menu-button {
+        display: block;
+        margin: auto var(--gap);
+        cursor: pointer;
+    }
+
+    #mobile-menu-button div {
+        width: 40px;
+        height: 4px;
+        margin: 6px;
+        background-color: currentColor;
+        transition: 0.7s
+    }
+
+    .open > #menu-button-bar-1 {
+        transform: rotate(45deg) translate(6px, 8px);
+    }
+
+    .open > #menu-button-bar-2 {
+        opacity: 0;
+    }
+
+    .open > #menu-button-bar-3 {
+        transform: rotate(-45deg) translate(6px, -8px);
+    }
+}

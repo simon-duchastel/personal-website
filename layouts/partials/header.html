@@ -46,6 +46,16 @@
 </script>
 {{- end }}
 
+{{- /* opens and closes the menu on mobile-sized screens */}}
+<script>
+    function onMobileMenuButtonClick() {
+        const mobileMenu = document.getElementsByClassName("mobile-menu")[0];
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        mobileMenu.classList.toggle("open")
+        mobileMenuButton.classList.toggle("open")
+    }
+</script>
+
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -127,6 +137,7 @@
             </div>
         </div>
         {{- $currentPage := . }}
+        <!-- Menu to display when screen is desktop-sized -->
         <ul id="menu">
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
@@ -153,5 +164,31 @@
             </li>
             {{- end }}
         </ul>
+        <!-- Menu to display when screen is mobile-sized -->
+        <div id="mobile-menu-button" onclick="onMobileMenuButtonClick()">
+            <!-- Hamburger-style button -->
+            <div id="menu-button-bar-1"></div>
+            <div id="menu-button-bar-2"></div>
+            <div id="menu-button-bar-3"></div>
+        </div>
     </nav>
+    <!-- Mobile menu elements -->
+    <ul id="menu" class="mobile-menu">
+        {{- range site.Menus.main }}
+        {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+        {{- $page_url:= $currentPage.Permalink | absLangURL }}
+        {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
+        <li>
+            <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
+            {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
+                <!-- This modifies behavior in PaperMod to also set the menu item as active if the user is on a sub-page of the menu -->
+                <span {{- if hasPrefix $page_url $menu_item_url }} class="active" {{- end }}>
+                    {{- .Pre }}
+                    {{- .Name -}}
+                    {{ .Post -}}
+                </span>
+            </a>
+        </li>
+        {{- end }}
+    </ul>
 </header>
