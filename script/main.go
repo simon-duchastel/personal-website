@@ -39,6 +39,8 @@ func main() {
 		if err = build(); err == nil {
 			err = upload() // only upload if there was no error building
 		}
+	case "rollback": // deploy whatever was downloaded before the last deploy
+		err = rollback()
 	case "rotatecert": // rotate the ssl (https) cert for the website
 		err = rotateCert()
 	case "help":
@@ -68,12 +70,13 @@ func printHelp() {
 	fmt.Println()
 
 	fmt.Println("Commands:")
-	fmt.Println("  build       - Build the website, overwriting the " + HUGO_BUILD_DIRECTORY + " directory")
-	fmt.Println("  deploy      - Build and upload the latest version of the website to simon.duchastel.com")
-	fmt.Println("  preview     - Start a local server for previewing the website")
-	fmt.Println("  upload      - Upload the built website and host it at simon.duchastel.com")
-	fmt.Println("  rotatecert  - Rotate the ssl (https) cert for simon.duchastel.com, duchastel.com, and duchastel.org")
-	fmt.Println("  help        - Print this help text")
+	fmt.Println("  build      - Build the website, overwriting the " + HUGO_BUILD_DIRECTORY + " directory")
+	fmt.Println("  deploy     - Build and upload the latest version of the website to simon.duchastel.com")
+	fmt.Println("  preview    - Start a local server for previewing the website")
+	fmt.Println("  upload     - Upload the built website and host it at simon.duchastel.com")
+	fmt.Println("  rollback   - Rollback the website to whatever was present before the last deploy (ie. the contents of '" + SITE_OLD_DIRECTORY + "')")
+	fmt.Println("  rotatecert - Rotate the ssl (https) cert for simon.duchastel.com, duchastel.com, and duchastel.org")
+	fmt.Println("  help       - Print this help text")
 }
 
 // Starts the server and launches the browser to view it
@@ -123,74 +126,63 @@ func build() error {
 	return nil
 }
 
-// Upload the website to the webhost
+// Upload the website to the web host
 func upload() error {
-	fmt.Println("Connecting to webhost")
+	fmt.Println("Connecting to web host")
 	// get the login configuration
 	config, err := getSshClientConfig()
 	if err != nil {
 		return err
 	}
 
-	// start the connection to the webhost
+	// start the connection to the web host
 	client, err := ssh.Dial("tcp", config.tcpAddress, config.clientConfig)
 	if err != nil {
-		fmt.Println("Error: failed to connect to webhost")
+		fmt.Println("Error: failed to connect to web host")
 		return err
 	}
 	defer client.Close()
 
-	// root of the website, ie. /home/[username]/public_html/simon.duchastel.com
-	websiteRoot := "/home/" + config.clientConfig.User + "/public_html/simon.duchastel.com"
+	// where the website is located on the web host
+	websiteRoot := websiteRemoteRoot(config.clientConfig.User)
 
-	// copy old website to bin/site-old/ as a back-up in case there's some kind of issue
-	fmt.Println("Copying old website from webhost to bin/website-old/ in case there are any issues")
-	files, err := listRemoteFiles(client, websiteRoot)
+	fmt.Println("Copying old website from web host to " + SITE_OLD_DIRECTORY + " in case there are any issues")
+	if err = downloadOldSite(websiteRoot, SITE_OLD_DIRECTORY, client); err != nil {
+		return err
+	}
+
+	if err = uploadWebsite(websiteRoot, HUGO_BUILD_DIRECTORY, client); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Deploy whatever was downloaded before the last deploy.
+// Before each deploy we download the old website to
+// a backup folder - use this command to redeploy that.
+func rollback() error {
+	fmt.Println("Beginning rollback of old website in " + SITE_OLD_DIRECTORY)
+	fmt.Println("Connecting to web host")
+	// get the login configuration
+	config, err := getSshClientConfig()
 	if err != nil {
-		fmt.Println("Error: could not recursively list files from '" + websiteRoot + "'")
 		return err
 	}
 
-	// clear bin/website-old/ directory in preparation for storing old website
-	if err := os.RemoveAll(SITE_OLD_DIRECTORY); err != nil {
-		fmt.Println("Error: cannot clear '" + SITE_OLD_DIRECTORY + "' directory")
+	// start the connection to the web host
+	client, err := ssh.Dial("tcp", config.tcpAddress, config.clientConfig)
+	if err != nil {
+		fmt.Println("Error: failed to connect to web host")
 		return err
 	}
+	defer client.Close()
 
-	if len(files) <= 0 {
-		fmt.Println("    Nothing to download")
-	}
-	for _, file := range files {
-		destinationFile := SITE_OLD_DIRECTORY + "/" + strings.TrimPrefix(file, websiteRoot+"/")
+	// where the website is located on the web host
+	websiteRoot := websiteRemoteRoot(config.clientConfig.User)
 
-		fmt.Println("  Downloading " + file)
-		if err := downloadRemoteFile(client, file, destinationFile); err != nil {
-			return err
-		}
-	}
-
-	fmt.Println("Removing old website from webhost")
-	if _, err := runRemoteCommand(client, "rm -rf "+websiteRoot+"/*"); err != nil { // delete everything in the website directory
-		return err
-	}
-
-	fmt.Println("Uploading new website to webhost")
-	if err := filepath.WalkDir(HUGO_BUILD_DIRECTORY, func(path string, file fs.DirEntry, walkErr error) error {
-		if walkErr != nil {
-			fmt.Println("Error: failed to read '" + path + "'")
-			return err
-		}
-
-		if !file.IsDir() && len(path) > 0 {
-			uploadFilePath := websiteRoot + "/" + strings.TrimPrefix(path, HUGO_BUILD_DIRECTORY+"/")
-			fmt.Println("  Uploading " + path)
-			if err := uploadFile(client, path, uploadFilePath); err != nil {
-				fmt.Println("Error: failed to upload file '" + path + "'")
-				return err
-			}
-		}
-		return nil
-	}); err != nil {
+	// upload the backup website
+	if err = uploadWebsite(websiteRoot, SITE_OLD_DIRECTORY, client); err != nil {
 		return err
 	}
 
@@ -225,8 +217,8 @@ func getSshClientConfig() (*sshConfig, error) {
 	if err != nil {
 		fmt.Println("Error: ssh config (username, password) must be provided in file ssh.config")
 		fmt.Println("ssh.config format:")
-		fmt.Println("- 1st line: username to auth into webhost ssh")
-		fmt.Println("- 2nd line: password to auth into webhost ssh")
+		fmt.Println("- 1st line: username to auth into web host ssh")
+		fmt.Println("- 2nd line: password to auth into web host ssh")
 		fmt.Println("- 3rd line: tcp address in the format '[address]:[port]' (ex. 'server.com:22')")
 		fmt.Println("- 4th line: location of ssh known_hosts file OR 'insecure' if host key should not be validated (INSECURE)")
 		return nil, err
@@ -245,7 +237,7 @@ func getSshClientConfig() (*sshConfig, error) {
 		fmt.Println("Error: 2nd line of ssh.config must contain ssh password")
 		return nil, errors.New("ssh config error")
 	}
-	pasword := fileScanner.Text()
+	password := fileScanner.Text()
 
 	if !fileScanner.Scan() {
 		fmt.Println("Error: 3rd line of ssh.config must contain tcp address in the format '[address]:[port]' (ex: 'server.com:22')")
@@ -277,7 +269,7 @@ func getSshClientConfig() (*sshConfig, error) {
 		&ssh.ClientConfig{
 			User: username,
 			Auth: []ssh.AuthMethod{
-				ssh.Password(pasword),
+				ssh.Password(password),
 			},
 			HostKeyCallback: hostKeyCallback,
 		},
@@ -471,6 +463,64 @@ func createFileWithDirectories(filePath string) (*os.File, error) {
 	return file, nil
 }
 
+func downloadOldSite(remoteWebsiteRoot, oldSiteDownloadLocation string, sshClient *ssh.Client) error {
+	// copy old website to bin/site-old/ as a back-up in case there's some kind of issue
+	files, err := listRemoteFiles(sshClient, remoteWebsiteRoot)
+	if err != nil {
+		fmt.Println("Error: could not recursively list files from '" + remoteWebsiteRoot + "'")
+		return err
+	}
+
+	// clear old website directory in preparation for storing old website
+	if err := os.RemoveAll(oldSiteDownloadLocation); err != nil {
+		fmt.Println("Error: cannot clear '" + oldSiteDownloadLocation + "' directory")
+		return err
+	}
+
+	if len(files) <= 0 {
+		fmt.Println("  Nothing to download")
+	}
+	for _, file := range files {
+		destinationFile := oldSiteDownloadLocation + "/" + strings.TrimPrefix(file, remoteWebsiteRoot+"/")
+
+		fmt.Println("  Downloading " + file)
+		if err := downloadRemoteFile(sshClient, file, destinationFile); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func uploadWebsite(remoteWebsiteRoot, siteToUploadLocation string, sshClient *ssh.Client) error {
+	fmt.Println("Removing old website from web host")
+	// run 'rm -rf' to delete everything in the website directory
+	if _, err := runRemoteCommand(sshClient, "rm -rf "+remoteWebsiteRoot+"/*"); err != nil {
+		return err
+	}
+
+	fmt.Println("Uploading website to web host")
+	if err := filepath.WalkDir(siteToUploadLocation, func(path string, file fs.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			fmt.Println("Error: failed to read '" + path + "'")
+			return walkErr
+		}
+
+		if !file.IsDir() && len(path) > 0 {
+			uploadFilePath := remoteWebsiteRoot + "/" + strings.TrimPrefix(path, siteToUploadLocation+"/")
+			fmt.Println("  Uploading " + path)
+			if err := uploadFile(sshClient, path, uploadFilePath); err != nil {
+				fmt.Println("Error: failed to upload file '" + path + "'")
+				return err
+			}
+		}
+		return nil
+	}); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 ////////
 // Constants
 ////////
@@ -486,3 +536,8 @@ const SITE_OLD_DIRECTORY = "bin/website-old"
 
 // Location of the Hugo build output directory
 const HUGO_BUILD_DIRECTORY = "public"
+
+// root of the website, ie. /home/[username]/public_html/simon.duchastel.com
+func websiteRemoteRoot(username string) string {
+	return "/home/" + username + "/public_html/simon.duchastel.com"
+}
