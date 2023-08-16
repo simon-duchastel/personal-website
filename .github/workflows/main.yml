@@ -1,0 +1,46 @@
+# This workflow publishes the website
+# ie. uploads the website and pushes the commit to the public repo
+
+name: Publish Website
+
+# Publish the website on commits to "main"
+on:
+  # Triggers the workflow on push events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Deploy the website to the webserver
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Go environment
+        uses: actions/setup-go@v4.1.0
+        with:
+          go-version: '1.20.6'
+      
+      - name: Build website tool
+        run: |
+          make clean
+          make
+
+      - name: create SSH config file
+        env: 
+          USERNAME: ${{ secrets.username }}
+          PASSWORD: ${{ secrets.password }}
+          ADDRESS: ${{ secrets.address }}
+          MODE: insecure
+        run: |
+          echo "$USERNAME" >> ssh.config
+          echo "$PASSWORD" >> ssh.config
+          echo "$ADDRESS" >> ssh.config
+          echo "$MODE" >> ssh.config
+
+      - name: Build + upload the website
+        run: ./website deploy
