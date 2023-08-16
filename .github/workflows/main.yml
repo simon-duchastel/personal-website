@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: 'simon-duchaste/personal-website'
+          repository: 'simon-duchastel/personal-website'
           token: ${{ secrets.githubtoken }}
 
       - name: push private main to public
