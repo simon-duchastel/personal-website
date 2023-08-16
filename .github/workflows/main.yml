@@ -16,7 +16,6 @@ jobs:
   # Deploy the website to the webserver
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -52,3 +51,19 @@ jobs:
 
       - name: Build + upload the website
         run: ./website deploy
+
+  # mirror the "main" branch on the private repo to the public repo
+  make-public:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: 'simon-duchaste/personal-website'
+          token: ${{ secrets.githubtoken }}
+
+      - name: push private main to public
+        run: |
+          git remote add private https://github.com/simon-duchastel/personal-website-private.git
+          git fetch private
+          git pull private main
+          git push origin main
