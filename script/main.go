@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"context"
 	"errors"
+	"flag"
 	"fmt"
 	"io/fs"
 	"os"
@@ -17,44 +18,93 @@ import (
 	"golang.org/x/crypto/ssh/knownhosts"
 )
 
+type StringAndBool struct {
+	text string
+	boolValue bool
+}
+
+func getCommandInfo() map[string]StringAndBool {
+	// Map from command to help text and indication if sub-domain value is required (via flag).
+	return map[string]StringAndBool{
+		"build": {"Build the website, overwriting the selected-domain's file on server.", true},
+		"deploy": {"Build and upload the latest version of the website to selected sub-domain", true},
+		"preview": {"Start a local server for previewing the website.", false},
+		"upload": {"Upload the built website and host it at selected sub-domain.", true},
+		"rollback": {"Rollback the website to whatever was present before the last deploy.", true},
+		"rotatecert": {"Rotate the ssl (https) cert for supported domains.", false},
+		"listcerts": {"List all of the domains for which we can rotate certs.", false},
+		"listsubdomains": {"List all of the sub-domains we support generation of web pages.", false},
+		"help": {"Print this help text.", false},
+	}
+}
+
+
+func getSupportedSubDomains() map[string]StringAndBool {
+	// Map of sub-domain values in CLI to path to store files on server and if we support certs renewal.
+	return map[string]StringAndBool {
+		"simon": {"simon.duchastel.com", true},
+		"nicolas": {"nicolas.duchastel.com", true},
+		"pointbolin": {"pointbplin.com", true},
+		"com": {"duchastel.com", true},
+		"org": {"duchastel.org", true},
+	}
+}
+
+var command string
+var subDomain string
+
 func main() {
-	args := os.Args[1:] // ignore the first arg (program name)
+	flag.StringVar(&subDomain, "subdomain", "", "Directory where to put files on file server (for what sub-domain)")
+	flag.Parse()
+
+	args := flag.Args()
 	if len(args) != 1 {
-		fmt.Println("Error: Must provide exactly one command")
-		fmt.Println()
-		printHelp()
+		fmt.Println("Error: did not specify command. See help.")
+		return
+	}
+	command := args[0]
+
+	cmdInfo, found := getCommandInfo()[command]
+	if  !found {
+		fmt.Println("Error: Must provide valid command. Try 'help' command.")
+		return
+	}
+
+	if _, found := getSupportedSubDomains()[subDomain]; !found && cmdInfo.boolValue {
+		fmt.Println("Error: command '" + command + "' requires sub-domain. Unknown subdomain: '" + subDomain + ". Try 'listsubdomains' to see list.")
 		return
 	}
 
 	// parse the args and execute relevant command
 	var err error
-	switch command := args[0]; command {
-	case "preview": // preview the website on a local server
-		err = startServer()
-	case "build": // build the website
-		err = build()
-	case "upload": // upload the website
-		err = upload()
-	case "deploy": // convenience command for build + upload
-		if err = build(); err == nil {
-			err = upload() // only upload if there was no error building
-		}
-	case "rollback": // deploy whatever was downloaded before the last deploy
-		err = rollback()
-	case "rotatecert": // rotate the ssl (https) cert for the website
-		err = rotateCert()
-	case "help":
-		printHelp()
-		err = errors.New("No command run")
-	default:
-		fmt.Println("Error: Invalid command '" + command + "'")
-		fmt.Println()
-		printHelp()
-		err = errors.New("Invalid command")
+	switch command {
+		case "preview": // preview the website on a local server
+			err = startServer()
+		case "build": // build the website
+			err = build()
+		case "upload": // upload the website
+			err = upload()
+		case "deploy": // convenience command for build + upload
+			if err = build(); err == nil {
+				err = upload() // only upload if there was no error building
+			}
+		case "rollback": // deploy whatever was downloaded before the last deploy
+			err = rollback()
+		case "rotatecert": // rotate the ssl (https) cert for the website
+			err = rotateCert()
+		case "listsubdomains": // list all of the supported sub-domains
+			printSubdomains()
+		case "listcerts": // list all certs which we manage
+			printCerts()
+		case "help":
+			printHelp()
+		default:
+			fmt.Println("Error: Invalid command '" + command + "'")
+			fmt.Println()
+			printHelp()
+			err = errors.New("Invalid command")
 	}
-	if err == nil {
-		fmt.Println("Success!")
-	} else {
+	if err != nil {
 		fmt.Println(err)
 	}
 }
@@ -63,6 +113,24 @@ func main() {
 // Commands
 ////////
 
+func printSubdomains() {
+	fmt.Println("Supported sub-domains:")
+	fmt.Println()
+	fmt.Println("   Each value to pass into 'subdomain' arg and corresponding dir to store files on server.")
+	fmt.Println()
+	for k, v := range getSupportedSubDomains() {
+		fmt.Printf("  %-15s -> files go into %s directory on server.\n", k, v.text)
+	}
+}
+
+func printCerts() {
+	fmt.Println("Here are the sub-domains for which we can rotate the SSL certificate:")
+	fmt.Println()
+	for k, v := range getSupportedSubDomains() {
+		fmt.Printf("  %-15s -> %s\n", k, v.text)
+	}
+}
+
 func printHelp() {
 	programName := os.Args[0] // first arg is program name
 	fmt.Println("Usage: " + programName + " [command]")
@@ -70,13 +138,13 @@ func printHelp() {
 	fmt.Println()
 
 	fmt.Println("Commands:")
-	fmt.Println("  build      - Build the website, overwriting the " + HUGO_BUILD_DIRECTORY + " directory")
-	fmt.Println("  deploy     - Build and upload the latest version of the website to simon.duchastel.com")
-	fmt.Println("  preview    - Start a local server for previewing the website")
-	fmt.Println("  upload     - Upload the built website and host it at simon.duchastel.com")
-	fmt.Println("  rollback   - Rollback the website to whatever was present before the last deploy (ie. the contents of '" + SITE_OLD_DIRECTORY + "')")
-	fmt.Println("  rotatecert - Rotate the ssl (https) cert for simon.duchastel.com, duchastel.com, and duchastel.org")
-	fmt.Println("  help       - Print this help text")
+	for k, v := range getCommandInfo() {
+		var extraReq string
+		if v.boolValue {
+			extraReq = " (requires sub-domain)"
+		}
+		fmt.Printf("  %-15s - %s%s\n", k, v.text, extraReq)
+	}
 }
 
 // Starts the server and launches the browser to view it
@@ -189,7 +257,7 @@ func rollback() error {
 	return nil
 }
 
-// Rotate the ssl (https) cert for the simon.duchastel.com, duchastel.com, and
+// Rotate the ssl (https) cert for the supported domains: simon.duchastel.com, duchastel.com, and
 // duchastel.org domains
 func rotateCert() error {
 	fmt.Println("Command not yet implemented. Sorry!")
@@ -539,5 +607,5 @@ const HUGO_BUILD_DIRECTORY = "public"
 
 // root of the website, ie. /home/[username]/public_html/simon.duchastel.com
 func websiteRemoteRoot(username string) string {
-	return "/home/" + username + "/public_html/simon.duchastel.com"
+	return "/home/" + username + "/public_html/" + subDomain
 }
