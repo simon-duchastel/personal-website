@@ -59,7 +59,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) != 1 {
-		fmt.Println("Error: did not specify command. See help.")
+		fmt.Println("Error: did not specify command. Try 'help' command.")
 		return
 	}
 	command := args[0]
