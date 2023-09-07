@@ -50,7 +50,7 @@ jobs:
           echo "$MODE" >> ssh.config
 
       - name: Build + upload the website
-        run: ./website deploy
+        run: ./website -subdomain simon deploy
 
   # mirror the "main" branch on the private repo to the public repo
   make-public:
