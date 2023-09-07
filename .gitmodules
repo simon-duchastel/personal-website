@@ -1,3 +1,7 @@
 [submodule "themes/PaperMod"]
 	path = themes/PaperMod
 	url = https://github.com/adityatelange/hugo-PaperMod.git
+
+[submodule "website-upload-tool"]
+	path = website-upload-tool
+	url = https://github.com/simon-duchastel/website-upload-tool.git

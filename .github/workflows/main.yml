@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install website theme
+      - name: Install website theme and website upload tool
         run: |
           git submodule init
           git submodule update
@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Hugo
         run: go install github.com/gohugoio/hugo@latest
-      
+
       - name: Build website tool
         run: |
           make clean

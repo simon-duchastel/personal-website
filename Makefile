@@ -1,6 +1,6 @@
 # build the ./website binary
-website : script/main.go
-	go build -o website  script/main.go 
+website : website-upload-tool/main.go
+	cd website-upload-tool; go build -o ../website  main.go 
 
 # clear out ./website binary, public/ (hugo output), and bin/ (other output)
 clean :
