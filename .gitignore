@@ -7,3 +7,6 @@ website
 
 # don't include config files
 ssh.config
+
+# don't include IDE files
+.vscode/*
