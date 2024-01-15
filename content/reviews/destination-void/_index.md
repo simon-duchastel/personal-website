@@ -1,5 +1,5 @@
 ---
-title: "Review - Destination Void"
+title: "Destination Void"
 date: 2023-10-12
 ---
 
