@@ -26,21 +26,15 @@ params:
 
 menu:
   main:
-    - name: Software Posts
-      url: "/posts"
-      weight: 10
     - name : Book Reviews
       url: "/reviews"
+      weight: 10
+    - name: Software Posts
+      url: "/posts"
       weight: 20
-
-    # uncoment once short stories are ready to share
-    # - name: Stories
-    #   url: "/stories"
-    #   weight: 30
-
     - name: Resume
       url: "/resume.pdf"
-      weight: 40
+      weight: 30
       # add a 'download' icon. Taken and modified from https://www.svgrepo.com/svg/525324/download-minimalistic
       post: '<!-- Taken and modified from https://www.svgrepo.com/svg/525324/download-minimalistic -->
       (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,4 +43,4 @@ menu:
       </svg>)'
     - name: "About Me"
       url: "/about"
-      weight: 50
+      weight: 40
