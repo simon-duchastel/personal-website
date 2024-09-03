@@ -1,5 +1,5 @@
 ---
-title: "Destination Void"
+title: "Review: Destination Void"
 date: 2023-10-12
 layout: single
 categories: ["Book Reviews"]

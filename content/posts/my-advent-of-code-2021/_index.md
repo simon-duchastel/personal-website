@@ -1,5 +1,5 @@
 ---
-title: "Advent of Code 2021"
+title: "My Advent of Code 2021"
 date: 2022-01-18
 layout: single
 categories: ["Software"]
