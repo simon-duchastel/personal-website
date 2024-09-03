@@ -1,0 +1,7 @@
+<ul class="categories-buttons">
+    {{- range $name, $items := .Site.Taxonomies.categories }}
+    <li>
+        <a href="{{ .Page.RelPermalink }}">{{ $name | humanize | title }}</a>  
+    </li>
+    {{- end }}
+</ul>

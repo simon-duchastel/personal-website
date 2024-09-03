@@ -1,6 +1,8 @@
 ---
 title: "Advent of Code 2023"
 date: 2024-07-19
+layout: single
+categories: ["Software"]
 ---
 
 _[View the code](https://github.com/simon-duchastel/advent-of-code-2023)_

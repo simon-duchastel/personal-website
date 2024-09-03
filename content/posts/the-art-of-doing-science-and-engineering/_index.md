@@ -1,6 +1,8 @@
 ---
 title: "The Art of Doing Science and Engineering"
 date: 2024-09-01
+layout: single
+categories: ["Book Reviews"]
 ---
 
 **[The Art of Doing Science and Engineering by Richard Hamming](https://press.stripe.com/the-art-of-doing-science-and-engineering)**

@@ -1,6 +1,8 @@
 ---
 title: "All Tomorrow's Parties"
 date: 2023-08-15
+layout: single
+categories: ["Book Reviews"]
 ---
 
 **[All Tomorrow's Parties by William Gibson](https://www.amazon.com/All-Tomorrows-Parties-Bridge-Trilogy/dp/0425190447)**

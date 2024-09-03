@@ -1,6 +1,8 @@
 ---
 title: "Atomic Habits"
 date: 2023-08-08
+layout: single
+categories: ["Book Reviews"]
 ---
 
 **[Atomic Habits by James Clear](https://jamesclear.com/atomic-habits)**

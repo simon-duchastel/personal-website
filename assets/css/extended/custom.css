@@ -69,3 +69,38 @@
         transform: rotate(-45deg) translate(6px, -8px);
     }
 }
+
+/* Used to have menu items be underlined on hover */
+.underline-link:hover {
+    border-bottom: 2px solid currentColor;
+}
+
+/* Taken with modification with terms.css to render the categories buttons */
+.categories-buttons ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.categories-buttons li {
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* The first li button shouldn't have margin so it doesn't start offset, the rest should */
+.categories-buttons li:not(:first-child) {
+    margin: 10px;
+}
+
+.categories-buttons a {
+    display: block;
+    padding: 3px 10px;
+    background: var(--tertiary);
+    border-radius: 6px;
+    transition: transform 0.1s;
+}
+
+.categories-buttons a:active {
+    background: var(--tertiary);
+    transform: scale(0.96);
+}

@@ -1,6 +1,8 @@
 ---
 title: "Fall of Hyperion"
 date: 2024-08-20
+layout: single
+categories: ["Book Reviews"]
 ---
 
 **[Fall of Hyperion by Dan Simmons](https://www.goodreads.com/book/show/77565.The_Fall_of_Hyperion)**

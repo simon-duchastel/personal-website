@@ -1,6 +1,8 @@
 ---
 title: "This is How You Lose the Time War"
 date: 2023-12-29
+layout: single
+categories: ["Book Reviews"]
 ---
 
 **[This is How You Lose the Time War by Amal El-Mohtar and Max Gladstone](https://www.goodreads.com/book/show/43352954-this-is-how-you-lose-the-time-war)**

@@ -1,13 +1,15 @@
 baseURL: 'https://simon.duchastel.com/'
 languageCode: 'en-us'
 title: "Simon Duchastel"
-paginate: 10
+paginate: 20
 theme: "PaperMod"
 
 
 enableRobotsTXT: true
 taxonomies:
-  # Don't include any taxonomies - by default categories and tags are built but shouldn't be
+  # override taxonimies with just 'cateogeries' so that a 'tags' page isn't generated
+  # by default, 'tags' and 'categories' are both generated but I only want 'categories'
+  category: categories
 
 params:
   env: production
@@ -26,15 +28,12 @@ params:
 
 menu:
   main:
-    - name : Book Reviews
-      url: "/reviews"
-      weight: 10
-    - name: Software Posts
+    - name: Posts
       url: "/posts"
-      weight: 20
+      weight: 10
     - name: Resume
       url: "/resume.pdf"
-      weight: 30
+      weight: 20
       # add a 'download' icon. Taken and modified from https://www.svgrepo.com/svg/525324/download-minimalistic
       post: '<!-- Taken and modified from https://www.svgrepo.com/svg/525324/download-minimalistic -->
       (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,4 +42,4 @@ menu:
       </svg>)'
     - name: "About Me"
       url: "/about"
-      weight: 40
+      weight: 30

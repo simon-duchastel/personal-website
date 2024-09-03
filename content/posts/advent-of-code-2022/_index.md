@@ -1,6 +1,8 @@
 ---
 title: "Advent of Code 2022"
 date: 2022-12-28
+layout: single
+categories: ["Software"]
 ---
 
 _[View the code](https://github.com/simon-duchastel/advent-of-code-2022)_

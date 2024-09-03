@@ -1,6 +1,8 @@
 ---
 title: "Some old software projects"
 date: 2022-01-15
+layout: single
+categories: ["Software"]
 ---
 
 As the first post for this website I thought it would be cool to reflect on some software projects I did in high school and college. None are particularly spectacular, but my philosophy is that the things you do in your free time don't have to be spectacular. I had fun doing them, and I also enjoy the opportunity to write some thoughts down on them in retrospect.

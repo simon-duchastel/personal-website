@@ -1,6 +1,8 @@
 ---
 title: "Annihilation"
 date: 2024-01-28
+layout: single
+categories: ["Book Reviews"]
 ---
 
 **[Annihilation by Jeff VanderMeer](https://en.wikipedia.org/wiki/Annihilation_(VanderMeer_novel))**

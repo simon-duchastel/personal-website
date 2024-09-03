@@ -1,5 +1,6 @@
 ---
 title: "About Me"
+layout: single
 ---
 
 ![Profile picture of Simon at the Statue of Liberty](simon-duchastel.jpg#center "Profile")
