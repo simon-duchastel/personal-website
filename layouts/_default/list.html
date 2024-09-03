@@ -91,7 +91,7 @@
     {{- if $categories }}
       &nbsp;·&nbsp;
       {{- range $index, $category := $categories }}
-        {{- if $index }}*{{- end }}{{ $category | title }}
+        {{- if $index }}&nbsp;·&nbsp;{{- end }}{{ $category | title }}
       {{- end }}
     {{- end }}
     <!-- END -->

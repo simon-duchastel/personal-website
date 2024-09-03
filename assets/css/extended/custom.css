@@ -76,10 +76,8 @@
 }
 
 /* Taken with modification with terms.css to render the categories buttons */
-.categories-buttons ul {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
+ul.categories-buttons {
+    margin-top: 20px;
 }
 
 .categories-buttons li {
@@ -87,9 +85,14 @@
     font-weight: 500;
 }
 
-/* The first li button shouldn't have margin so it doesn't start offset, the rest should */
+/* The first li button shouldn't have start margin so it doesn't start offset, the rest should */
 .categories-buttons li:not(:first-child) {
-    margin: 10px;
+    margin: 5px;
+}
+.categories-buttons li:first-child {
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .categories-buttons a {
