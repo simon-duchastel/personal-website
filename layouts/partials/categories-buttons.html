@@ -1,7 +1,14 @@
 <ul class="categories-buttons">
+    {{- $currentLink := .RelPermalink }}
     {{- range $name, $items := .Site.Taxonomies.categories }}
     <li>
-        <a href="{{ .Page.RelPermalink }}">{{ $name | humanize | title }}</a>  
+        {{- $categoryLink := .Page.RelPermalink }}
+        {{- $isActive := eq $currentLink $categoryLink }}
+        <a 
+            href="{{ if $isActive }}/posts{{ else }}{{ $categoryLink }}{{ end }}"
+            class="{{ if $isActive }}active{{ end }}">
+            {{ $name | humanize | title }}
+        </a>
     </li>
     {{- end }}
 </ul>

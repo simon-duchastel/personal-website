@@ -100,10 +100,20 @@ ul.categories-buttons {
     padding: 3px 10px;
     background: var(--tertiary);
     border-radius: 6px;
-    transition: transform 0.1s;
+    box-sizing: border-box;
+    transition: transform 0.1s ease, border 0.1s ease;
+}
+
+.categories-buttons a:hover {
+    border: 3px solid;
+}
+
+a.active {
+    border: 3px solid;
 }
 
 .categories-buttons a:active {
     background: var(--tertiary);
     transform: scale(0.96);
+    border: 3px solid;
 }
