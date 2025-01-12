@@ -1,7 +1,6 @@
 ---
 title: "Review: All Tomorrow's Parties"
 date: 2023-08-15
-layout: single
 categories: ["Book Reviews"]
 ---
 

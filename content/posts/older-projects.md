@@ -1,7 +1,6 @@
 ---
 title: "Some old software projects"
 date: 2022-01-15
-layout: single
 categories: ["Software"]
 ---
 

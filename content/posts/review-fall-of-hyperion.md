@@ -1,7 +1,6 @@
 ---
 title: "Review: Fall of Hyperion"
 date: 2024-08-20
-layout: single
 categories: ["Book Reviews"]
 ---
 

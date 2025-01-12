@@ -1,7 +1,6 @@
 ---
 title: "Building my website with Hugo + Go"
 date: 2023-08-06
-layout: single
 categories: ["Software"]
 ---
 

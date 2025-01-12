@@ -1,7 +1,6 @@
 ---
 title: "My Advent of Code 2023"
 date: 2024-07-19
-layout: single
 categories: ["Software"]
 ---
 

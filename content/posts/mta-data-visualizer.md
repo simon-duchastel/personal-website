@@ -1,7 +1,6 @@
 ---
 title: "MTA Data Visualizer"
 date: 2025-01-06
-layout: single
 categories: ["Software"]
 ---
 
