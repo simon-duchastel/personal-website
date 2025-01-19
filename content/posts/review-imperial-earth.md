@@ -1,0 +1,23 @@
+---
+title: "Review: Imperial Earth"
+date: 2024-09-08
+categories: ["Book Reviews"]
+---
+
+**[Imperial Earth by Arthur C. Clarke](https://www.goodreads.com/book/show/117840.Imperial_Earth)**
+
+**Overall Review:** While not as grand nor epic as the name implies, Imperial Earth is nonetheless a fun science fiction exploration of love and rivalry in a futuristic Earth of the 23rd century. It's a great book for those looking for a casual read by one of the greats in science fiction.
+
+**Synopsis:** Duncan Makenzie, heir to the powerful Makenzie hydrogen mining family on Saturn's moon of Titan, must travel to Earth to ward off the coming threat of a new technology which risks making hydrogen fuel for space travel obsolete. Along the way, he reconnects with his lost love Calindy and rekindles his fierce rivalry with childhood friend Karl from the rival Helmer family.
+
+---
+
+I enjoyed _Imperial Earth_, but it wasn't at all what I was expecting. First of all, in the book Earth does not come across as an Empire. We're told many times how important Earth is and that it's the nexus of activity in the solar system. However, none of the Earth characters the protagonist Duncan meets are particularly menacing or powerful. In fact they all come across as friendly at best and out-of-the-loop at worst. We're not shown any evidence that Earth is a powerful force to be reckoned with. The main character doesn't encounter any grand structures that might impose upon the reader how mighty Earth is, nor does he see any impressive feats like a military action that would indicate that Earth is intimidating. Instead, Earth just seems like a nice vacation spot far away from Titan.
+
+I was also surprised that the plot hardly revolved around the threat to Titan from hydrogen becoming obsolete for space travel, and thus decimating their economy. Going into the book, I had the impression this was going to be the main conflict of the story. Instead the conflict revolved around finding out what Karl, Duncan's childhood friend, was up to on Earth. This I blame to be more the book cover's fault than anything else (more evidence that in general you shouldn't trust blurbs and trailers). While hydrogen mining was hinted at the beginning of the book, it was quickly discarded later on in the story only to resurface tangentially at the end. As an aside, the blurb also ruined for me that Karl comes to Earth halfway through the story, which I was moderately upset about since it would have been a cool twist.
+
+On a positive note, I found it surprising that Arthur C. Clarke focused on the sea throughout the novel. I had no idea the mysteries of the oceans would be a theme, but about halfway through the book it became clear it was a major focus. The comparison of space to the oceans and aliens to the creatures of the deep was one I'd seen before in a few places (notably [_Songs of a Distant Earth_](https://www.goodreads.com/book/show/117842.Songs_of_Distant_Earth), another of Clarke's works). I don't personally resonate with the comparison, but I nonetheless enjoy when books explore the idea. The ocean theme feels relatively fresh for scifi. Clarke lived in Sri Lanka for the last half of his life and was an avid ocean explorer, which explains his recurring fascination with the theme.
+
+Funny enough, th whole time I was reading the book I thought it was written by Isaac Asimov. I have no idea why I confused the two names in my brain. On my flight to San Francisco I suddenly realized that the name printed on the cover was Clarke and not Asimov - all of a sudden the differences between Clarke's casual [_Imperial Earth_](https://www.goodreads.com/book/show/117840.Imperial_Earth) and Asimov's much grander [_Foundation_](https://www.goodreads.com/book/show/29579.Foundation) made sense!
+
+Overall, I enjoyed _Imperial Earth_. It was a good casual read. It had the exciting scientific world-building that Clarke is known for like in [_2001: A Space Odyssey_](https://www.goodreads.com/book/show/70535.2001), but without the grandeur of some of his other works like [_Rendezvous with Rama_](https://www.goodreads.com/book/show/112537.Rendezvous_with_Rama). It's interesting to contemplate his idea that large alien behemoths could be lurking in the voids between the stars. I also enjoyed the exploration of Titian society contrasted with futuristic society of Earth. The small details like everyone living underground, self-driving cars, and vacuum trains between cities made the world feel futuristic yet believable.

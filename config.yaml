@@ -1,7 +1,7 @@
 baseURL: 'https://simon.duchastel.com/'
 languageCode: 'en-us'
 title: "Simon Duchastel"
-paginate: 20
+paginate: 10
 theme: "PaperMod"
 
 
