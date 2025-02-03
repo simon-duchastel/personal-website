@@ -9,7 +9,7 @@ layout: single
 
 I'm Simon Duchastel, a software developer living in New York City.
 
-For my day job, I'm currently building Android apps. I also have experience with backend systems developing RESTful APIs and microservices in a serverless architecture. If you're interested in my work professionally as a software developer, you can find my resume here: [{{< baseUrl >}}resume.pdf](../resume.pdf).
+For my day job, I'm currently building Android apps. I also have experience with backend systems developing RESTful APIs and microservices in a serverless architecture. If you're interested in my work professionally as a software developer, you can find [my resume here]({{< baseUrl >}}resume.pdf).
 
 On this website, you’ll mostly find me cataloging and reflecting on my hobbies. I mostly write about coding and books. This website is itself a coding project — I built it with [Hugo](https://gohugo.io).
 
