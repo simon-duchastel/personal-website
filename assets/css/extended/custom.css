@@ -112,3 +112,21 @@ a.active {
     transform: scale(0.96);
     border: 3px solid;
 }
+
+/* Animation toggle styles */
+#animation-toggle {
+    font-size: 26px;
+    margin: auto 4px;
+}
+
+body.animations-disabled #animation-on {
+    display: none;
+}
+
+body:not(.animations-disabled) #animation-off {
+    display: none;
+}
+
+#animation-toggle:focus {
+    outline: 0;
+}

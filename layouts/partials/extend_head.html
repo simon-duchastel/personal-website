@@ -1,0 +1,5 @@
+{{ $rocketCSS := resources.Get "css/rocket.css" | minify }}
+<link rel="stylesheet" href="{{ $rocketCSS.RelPermalink }}">
+
+{{ $rocketJS := resources.Get "js/rocket.js" | minify }}
+<script src="{{ $rocketJS.RelPermalink }}" defer></script> 
