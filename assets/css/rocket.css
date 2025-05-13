@@ -1,6 +1,12 @@
 :root {
     --stars-bg-start: #f8f9fa;
     --stars-bg-end: #e9ecef;
+    --theme: rgb(245, 245, 245);  /* override theme in lightmode */
+    --border: rgb(162, 162, 162); /* override border color in lightmode */
+}
+
+.post-entry {
+    border: 2px solid var(--border);
 }
 
 .stars {
