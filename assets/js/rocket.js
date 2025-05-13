@@ -179,8 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         star.style.left = `${Math.random() * 100}%`;
         star.style.top = `${Math.random() * 100}%`;
         
-        // Random size between 1px and 3px
-        const size = Math.random() * 2 + 1;
+        // Random size between 2px and 6px
+        const size = Math.random() * 4 + 2;
         star.style.width = `${size}px`;
         star.style.height = `${size}px`;
         

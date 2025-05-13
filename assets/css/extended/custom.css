@@ -39,7 +39,7 @@
     
     #mobile-menu-button {
         display: block;
-        margin: auto var(--gap);
+        margin: auto var(--primary-color);
         cursor: pointer;
     }
 
