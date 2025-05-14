@@ -169,7 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
     starsContainer.className = 'stars';
     document.body.prepend(starsContainer);
 
-    const numberOfStars = 200;
+    // Calculate number of stars based on viewport size
+    // Aim for roughly 1 star per 10000 square pixels
+    const viewportArea = window.innerWidth * window.innerHeight;
+    const numberOfStars = Math.floor(viewportArea / 10000);
     
     for (let i = 0; i < numberOfStars; i++) {
         const star = document.createElement('div');
@@ -208,4 +211,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('pref-animations') === 'disabled') {
         document.body.classList.add('animations-disabled');
     }
+
+    // Update stars on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        // Debounce resize events
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Remove existing stars
+            starsContainer.innerHTML = '';
+            
+            // Calculate new number of stars
+            const viewportArea = window.innerWidth * window.innerHeight;
+            const numberOfStars = Math.floor(viewportArea / 10000);
+            
+            // Create new stars
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random animation duration between 2s and 5s
+                const duration = Math.random() * 3 + 2;
+                star.style.setProperty('--duration', `${duration}s`);
+                
+                // Random delay
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }, 250); // Wait 250ms after resize ends before updating
+    });
 }); 

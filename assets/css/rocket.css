@@ -52,9 +52,11 @@ body.animations-disabled .stars {
 .logo,
 #menu,
 #mobile-menu-button,
+.not-found,
 .page-header,
-.post-single,
+.post-header,
 .post-entry,
+.post-content,
 .profile_inner {
     position: relative;
     z-index: 1;
