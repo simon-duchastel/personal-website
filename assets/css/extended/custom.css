@@ -131,7 +131,12 @@ body:not(.animations-disabled) #animation-off {
     outline: 0;
 }
 
-/* Theme toggle icon overrides */
+/* 
+    Theme toggle icon override:
+    By default the theme sets the sun to be visible in darkmode
+    (indicating to go to lightmode), whereas I want the sun to
+    be visible in lightmode (indicating you're currently in lightmode). 
+ */
 body.dark #moon {
     display: inline;
     vertical-align: middle;
