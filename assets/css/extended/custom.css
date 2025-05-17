@@ -130,3 +130,28 @@ body:not(.animations-disabled) #animation-off {
 #animation-toggle:focus {
     outline: 0;
 }
+
+/* Theme toggle icon overrides */
+body.dark #moon {
+    display: inline;
+    vertical-align: middle;
+    transform: translate(0, -10%);
+    border-radius: 6px;
+    margin-inline-end: 8px;
+}
+
+body.dark #sun {
+    display: none;
+}
+
+body:not(.dark) #moon {
+    display: none;
+}
+
+body:not(.dark) #sun {
+    display: inline;
+    vertical-align: middle;
+    transform: translate(0, -10%);
+    border-radius: 6px;
+    margin-inline-end: 8px;
+}
