@@ -57,7 +57,8 @@ body.animations-disabled .stars {
 .post-header,
 .post-entry,
 .post-content,
-.profile_inner {
+.profile_inner,
+.footer > span {
     position: relative;
     z-index: 1;
     background: var(--theme);

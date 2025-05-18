@@ -1,5 +1,7 @@
 {{ $rocketCSS := resources.Get "css/rocket.css" | minify }}
 <link rel="stylesheet" href="{{ $rocketCSS.RelPermalink }}">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-papQ+..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 {{ $rocketJS := resources.Get "js/rocket.js" | minify }}
 <script src="{{ $rocketJS.RelPermalink }}" defer></script> 

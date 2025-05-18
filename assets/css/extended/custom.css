@@ -160,3 +160,30 @@ body:not(.dark) #sun {
     border-radius: 6px;
     margin-inline-end: 8px;
 }
+
+/** 
+    Copy of `.footer a` css to exclude links without a border (ex. icons)
+    and to allow sub-spans that have some parts with borders and some parts without
+
+**/
+.footer a.no-border {
+    /** copy of `.footer a` but with a 0px border **/
+    color: inherit;
+    border-bottom: 0px;
+}
+
+.footer a.no-border:hover {
+    /** copy of `.footer a:hover` but with a 0px border **/
+    border-bottom: 0px;
+    color: var(--primary);
+}
+.footer span.footer-link {
+    /** copy of `.footer a` **/
+    color: inherit;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.footer span.footer-link:hover {
+    /** copy of `.footer a:hover` **/
+    border-bottom: 1px solid var(--primary);
+}
