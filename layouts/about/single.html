@@ -31,17 +31,19 @@
     <div class="grid-sidebar">
       {{- /* Currently Reading Card */ -}}
       {{- with .Params.currentlyReading }}
-      <div class="reading-card-v2">
-        {{- if .coverImage }}
-        <img src="{{ .coverImage }}" alt="Cover of {{ .title }}" class="book-cover" style="width: 55px !important; height: 82px !important; max-width: 55px !important; max-height: 82px !important; min-width: 55px !important; min-height: 82px !important;">
-        {{- end }}
-        <div class="reading-content">
-          <span class="card-label">📖 Currently Reading</span>
-          <h3 class="book-title-v2">{{ .title }}</h3>
-          <p class="book-author-v2">{{ .author }}</p>
-          <a href="https://goodreads.com/simon-duchastel" target="_blank" rel="noopener noreferrer" class="goodreads-link">View my reading list →</a>
+      <a href="https://hardcover.app/@simonduchastel/books/currently-reading" target="_blank" rel="noopener noreferrer" class="reading-card-link">
+        <div class="reading-card-v2">
+          {{- if .coverImage }}
+          <img src="{{ .coverImage }}" alt="Cover of {{ .title }}" class="book-cover" style="width: 55px !important; height: 82px !important; max-width: 55px !important; max-height: 82px !important; min-width: 55px !important; min-height: 82px !important;">
+          {{- end }}
+          <div class="reading-content">
+            <span class="card-label">📖 Currently Reading</span>
+            <h3 class="book-title-v2">{{ .title }}</h3>
+            <p class="book-author-v2">{{ .author }}</p>
+            <a href="https://hardcover.app/@simonduchastel/books" target="_blank" rel="noopener noreferrer" class="hardcover-link">View my reading list →</a>
+          </div>
         </div>
-      </div>
+      </a>
       {{- end }}
 
       {{- /* Quotes Section */ -}}

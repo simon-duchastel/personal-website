@@ -25,8 +25,8 @@ params:
         url: "https://github.com/simon-duchastel"
       - name: "linkedin"
         url: "https://www.linkedin.com/in/simonduchastel/"
-      - name: "goodreads"
-        url: "https://goodreads.com/simon-duchastel"
+      - name: "hardcover"
+        url: "https://hardcover.app/@simonduchastel"
 
 menu:
   main:

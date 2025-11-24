@@ -290,7 +290,7 @@ body:has(.about-page-v2) .main {
   margin: 0.75rem 0 0 0;
 }
 
-.goodreads-link {
+.hardcover-link {
   display: inline-block;
   margin-top: 0.25rem;
   font-size: 0.7rem;
@@ -302,7 +302,7 @@ body:has(.about-page-v2) .main {
   white-space: nowrap;
 }
 
-.goodreads-link:hover {
+.hardcover-link:hover {
   opacity: 1;
 }
 
