@@ -1,0 +1,64 @@
+{{- define "main" }}
+
+<article class="about-page-v2">
+  {{- /* Main Content Grid - 2 Columns */ -}}
+  <div class="about-grid">
+
+    {{- /* Left Column - Photo + Bio */ -}}
+    <div class="grid-left">
+      {{- /* Profile Photo + Title */ -}}
+      <div class="profile-header">
+        <div class="profile-photo-section">
+          {{- with .Page.Resources.GetMatch "simon-duchastel.jpg" }}
+          <img src="{{ .RelPermalink }}" alt="Profile picture of Simon Duchastel" class="profile-image-main">
+          {{- end }}
+        </div>
+        <div class="profile-title-section">
+          <h1 class="hero-title">{{ .Title }}</h1>
+          <p class="hero-subtitle">{{ site.Params.profileMode.subtitle }}</p>
+        </div>
+      </div>
+
+      {{- /* Bio Content */ -}}
+      <section class="grid-bio">
+        <div class="bio-content">
+          {{- .Content -}}
+        </div>
+      </section>
+    </div>
+
+    {{- /* Right Sidebar - Reading + Quotes */ -}}
+    <div class="grid-sidebar">
+      {{- /* Currently Reading Card */ -}}
+      {{- with .Params.currentlyReading }}
+      <div class="reading-card-v2">
+        {{- if .coverImage }}
+        <img src="{{ .coverImage }}" alt="Cover of {{ .title }}" class="book-cover" style="width: 55px !important; height: 82px !important; max-width: 55px !important; max-height: 82px !important; min-width: 55px !important; min-height: 82px !important;">
+        {{- end }}
+        <div class="reading-content">
+          <span class="card-label">📖 Currently Reading</span>
+          <h3 class="book-title-v2">{{ .title }}</h3>
+          <p class="book-author-v2">{{ .author }}</p>
+          <a href="https://goodreads.com/simon-duchastel" target="_blank" rel="noopener noreferrer" class="goodreads-link">View my reading list →</a>
+        </div>
+      </div>
+      {{- end }}
+
+      {{- /* Quotes Section */ -}}
+      {{- with .Params.quotes }}
+      <div class="quotes-section">
+        <div class="section-label">💬 Quotes I Like</div>
+        {{- range . }}
+        <blockquote class="quote-card-v2">
+          <p class="quote-text-v2">{{ .text }}</p>
+          <footer class="quote-author-v2">{{ .author }}</footer>
+        </blockquote>
+        {{- end }}
+      </div>
+      {{- end }}
+    </div>
+
+  </div>
+</article>
+
+{{- end }}{{/* end main */}}
