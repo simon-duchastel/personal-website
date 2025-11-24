@@ -10,3 +10,9 @@ ssh.config
 
 # don't include IDE files
 .vscode/*
+
+# don't include environment files
+.env
+
+# node modules
+node_modules/

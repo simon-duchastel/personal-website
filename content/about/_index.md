@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "The Artist's Way"
+  title: "The Artist's Way: A Spiritual Path to Higher Creativity"
   author: "Julia Cameron"
-  coverImage: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1440952332i/615570.jpg"
+  coverImage: "https://assets.hardcover.app/edition/30406895/aaf905c8a55789b6beb8fd8b433495fff2875525.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
