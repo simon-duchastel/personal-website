@@ -50,27 +50,20 @@
 }
 
 /* ============================================
-   BASE LAYOUT - Break free from theme constraints!
+   BASE LAYOUT - Work within theme constraints
    ============================================ */
 
-/* Override PaperMod's .main container width constraint */
+/* Work within PaperMod's standard content width (like blog posts) */
 .about-page-v2 {
-  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 0;
   width: 100%;
+  box-sizing: border-box;
 }
 
-/* Ensure the parent main container doesn't constrain us */
-main:has(.about-page-v2) {
-  max-width: none !important;
-  width: 100%;
-}
-
-/* Fallback for browsers that don't support :has() */
-body:has(.about-page-v2) .main {
-  max-width: none !important;
-  width: 100%;
+/* Ensure all children respect box-sizing */
+.about-page-v2 * {
+  box-sizing: border-box;
 }
 
 /* ============================================
@@ -116,9 +109,10 @@ body:has(.about-page-v2) .main {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 4rem;
+  grid-template-columns: 1fr minmax(240px, 35%);
+  gap: 2rem;
   margin-top: 0;
+  width: 100%;
 }
 
 /* Left Column - Photo + Bio */
@@ -126,6 +120,7 @@ body:has(.about-page-v2) .main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-width: 0;
 }
 
 .profile-photo-section {
@@ -135,6 +130,7 @@ body:has(.about-page-v2) .main {
 .profile-image-main {
   width: 220px;
   height: 220px;
+  max-width: 100%;
   border-radius: 16px;
   object-fit: cover;
   box-shadow:
@@ -158,12 +154,11 @@ body:has(.about-page-v2) .main {
 .bio-content {
   font-size: 1.05rem;
   line-height: 1.8;
-  max-width: 650px;
+  max-width: 100%;
   background: rgb(245, 245, 245);
   position: relative;
   z-index: 1;
   padding: 1rem;
-  margin-left: -1rem;
   border-radius: 6px;
 }
 
@@ -191,6 +186,7 @@ body:has(.about-page-v2) .main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-width: 0;
   animation: slideUp 0.7s ease-out 0.6s both;
 }
 
@@ -324,7 +320,6 @@ body:has(.about-page-v2) .main {
   margin-bottom: 0.5rem;
   font-weight: 600;
   padding: 0.3rem 0.5rem;
-  margin-left: -0.5rem;
   background: rgb(245, 245, 245);
   position: relative;
   z-index: 1;
@@ -395,10 +390,10 @@ body:has(.about-page-v2) .main {
    RESPONSIVE - Tablet
    ============================================ */
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
   .about-grid {
-    grid-template-columns: 1fr 350px;
-    gap: 3rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
@@ -408,7 +403,7 @@ body:has(.about-page-v2) .main {
 
 @media (max-width: 768px) {
   .about-page-v2 {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0;
   }
 
   /* Profile header stacks vertically */
@@ -440,10 +435,12 @@ body:has(.about-page-v2) .main {
   .profile-image-main {
     width: 160px;
     height: 160px;
+    max-width: 100%;
   }
 
   .bio-content {
     font-size: 1rem;
+    padding: 0.75rem;
   }
 
   .reading-card-v2 {
