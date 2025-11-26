@@ -162,7 +162,7 @@
   border-radius: 6px;
 }
 
-.dark .bio-content {
+html[data-theme="dark"] .bio-content {
   background: rgb(29, 30, 32);
 }
 
@@ -322,7 +322,7 @@
   z-index: 1;
 }
 
-.dark .section-label {
+html[data-theme="dark"] .section-label {
   background: rgb(29, 30, 32);
   color: rgba(255, 255, 255, 0.6);
 }
