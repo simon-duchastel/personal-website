@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "The Artist's Way: A Spiritual Path to Higher Creativity"
-  author: "Julia Cameron"
-  coverImage: "https://assets.hardcover.app/edition/30406895/aaf905c8a55789b6beb8fd8b433495fff2875525.jpeg"
+  title: "A Scanner Darkly"
+  author: "Philip K. Dick"
+  coverImage: "https://assets.hardcover.app/edition/30394702/7993da38a2aae32e2eafb8e00959310ece90b37b.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
