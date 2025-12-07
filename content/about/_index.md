@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "A Scanner Darkly"
-  author: "Philip K. Dick"
-  coverImage: "https://assets.hardcover.app/edition/30394702/7993da38a2aae32e2eafb8e00959310ece90b37b.jpeg"
+  title: "Drone Ensign"
+  author: "Kyle  Johnson"
+  coverImage: "https://assets.hardcover.app/external_data/1637316/aa31053e93dfc65afb21eb138facb927ca577f93.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
