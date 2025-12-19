@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "Drone Ensign"
-  author: "Kyle  Johnson"
-  coverImage: "https://assets.hardcover.app/external_data/1637316/aa31053e93dfc65afb21eb138facb927ca577f93.jpeg"
+  title: "The Scaling Era: An Oral History of AI, 2019–2025"
+  author: "Dwarkesh Patel"
+  coverImage: "https://assets.hardcover.app/edition/32143155/d94127cffeb58fc3f5cad3cb9bf77c3041aa1a18.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
