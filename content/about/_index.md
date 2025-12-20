@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "The Scaling Era: An Oral History of AI, 2019–2025"
-  author: "Dwarkesh Patel"
-  coverImage: "https://assets.hardcover.app/edition/32143155/d94127cffeb58fc3f5cad3cb9bf77c3041aa1a18.jpeg"
+  title: "Nation"
+  author: "Terry Pratchett"
+  coverImage: "https://assets.hardcover.app/edition/30932450/cfd8d7d7-2c5f-4fea-9ecc-0462a87ea0e7.jpg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
