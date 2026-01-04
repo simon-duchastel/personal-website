@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "Woman without a Shadow"
-  author: "Karen Haber"
-  coverImage: "https://assets.hardcover.app/edition/32051116/4a52eb06b388c28d44bb4080e0202ff23253ec07.jpeg"
+  title: "Ganwold's Child"
+  author: "Diann Thornley Read"
+  coverImage: "https://assets.hardcover.app/external_data/60071674/a98640e29e551f8a67c6e59180b3aad76deaf8d9.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
