@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "Ganwold's Child"
-  author: "Diann Thornley Read"
-  coverImage: "https://assets.hardcover.app/external_data/60071674/a98640e29e551f8a67c6e59180b3aad76deaf8d9.jpeg"
+  title: "Gateway"
+  author: "Frederik Pohl"
+  coverImage: "https://assets.hardcover.app/edition/14189904/b0121d691353de942ef2102a00ce0464f741b030.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
