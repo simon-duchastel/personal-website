@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "Gateway"
-  author: "Frederik Pohl"
-  coverImage: "https://assets.hardcover.app/edition/14189904/b0121d691353de942ef2102a00ce0464f741b030.jpeg"
+  title: "Profiles of the Future"
+  author: "Arthur C. Clarke"
+  coverImage: "https://assets.hardcover.app/edition/6781191/10237675-L.jpg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
