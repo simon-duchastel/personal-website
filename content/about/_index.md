@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "Profiles of the Future"
-  author: "Arthur C. Clarke"
-  coverImage: "https://assets.hardcover.app/edition/6781191/10237675-L.jpg"
+  title: "Pattern Recognition"
+  author: "William Gibson"
+  coverImage: "https://assets.hardcover.app/edition/30399419/4c7e0c329106c349de3505153b3607b0a5064bae.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
