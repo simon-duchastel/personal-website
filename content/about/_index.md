@@ -2,9 +2,9 @@
 title: "About Me"
 layout: single
 currentlyReading:
-  title: "Appointment at Bloodstar"
-  author: "Edward E. Smith "
-  coverImage: "https://assets.hardcover.app/external_data/31975064/48291ed871dee2b3f121be0e90b16dd5e1bd246a.jpeg"
+  title: "The Void Captain's Tale"
+  author: "Norman Spinrad"
+  coverImage: "https://assets.hardcover.app/external_data/26673459/17a17cbca1a2bada2647cc1d20dcf73986e5bcfb.jpeg"
 quotes:
   - text: "If you want to be a writer, you must do two things above all others: read a lot and write a lot"
     author: "Stephen King"
